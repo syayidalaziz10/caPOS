@@ -11,6 +11,9 @@ module.exports = {
       'secondary' : '#F3F3F3',
       'componen': '#F0719C',
     },
+    fontFamily: {
+      body: ['Montserrat']
+    },
   },
   plugins: [],
 }
