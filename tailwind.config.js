@@ -10,10 +10,15 @@ module.exports = {
       'primary':'#1E2541',
       'secondary' : '#F3F3F3',
       'componen': '#F0719C',
+      'sidebar' : '#F0719C',
+      'warna-2':'#354374',
+      'warna-3':'#FFA46B',
     },
     fontFamily: {
       body: ['Montserrat']
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar-hide')
+  ],
 }
