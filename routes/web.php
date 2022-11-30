@@ -17,6 +17,14 @@ Route::get('/', function () {
     return view('login');
 });
 
-Route::get('/side', function () {
-    return view('partials.sidebar');
+Route::get('/kasir', function () {
+    return view('kasir.pesanan');
+});
+
+Route::get('/admin/kasir', function () {
+    return view('admin.kasir');
+});
+
+Route::get('/admin/manager', function () {
+    return view('admin.manager');
 });
