@@ -22,13 +22,13 @@ Route::get('/kasir', function () {
 });
 
 Route::get('/admin/kasir', function () {
-    return view('admin.kasir');
+    return view('admin.kasir',["page" => "kasir"]);
 });
 
 Route::get('/admin/manager', function () {
-    return view('admin.manager');
+    return view('admin.manager',["page" => "manager"]);
 });
 
 Route::get('/admin/menu', function () {
-    return view('admin.menu');
+    return view('admin.menu',["page" => "menu"]);
 });
