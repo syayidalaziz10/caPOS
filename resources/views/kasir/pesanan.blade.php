@@ -6,6 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
     <title>caPOS | Pesanan</title>
+    <style>
+        .addorder {
+            border: 2px solid white;
+        }
+    </style>
 </head>
 <body class="font-body">
     <div class="flex">
@@ -59,6 +64,7 @@
                 </div>
             </div>
         </div>
+        
         {{-- end sidebar --}}
         {{-- list menu --}}
         <div class="w-1/2 bg-primary">
@@ -72,7 +78,7 @@
                 <h1 class="text-secondary text-2xl font-semibold mr-80 pb-4">Daftar Menu</h1>
                 <div class="overflow-auto w-full flex flex-col items-center scrollbar-hide">
                     {{-- daftar menu --}}
-                    <button type="text" class="w-8/12 mt-10 shadow rounded-2xl bg-primary p-4 flex ">
+                    <button id="M-01" data-idmenu="M-01" data-namamenu='Americano' data-hargamenu="Rp. 12.000" data-gambar = 'Americano.jpg' data-hg=12000  onclick="cobu(this);" class="btn w-8/12 mt-10 shadow rounded-2xl bg-primary p-4 flex">
                         <div class="rounded-3xl mr-8 w-20 h-20 bg-cover bg-center" style="background-image: url(img/Americano.jpg)"></div>
                         <div class="py-3 text-secondary">
                             <h1 class="font-semibold tracking-wider">Americano</h1>
@@ -81,83 +87,20 @@
                     </button>
                     {{-- end daftar menu --}}
                     {{-- daftar menu --}}
-                    <button type="text" class="w-8/12 mt-10 shadow rounded-2xl bg-primary p-4 flex ">
-                        <div class="rounded-3xl mr-8 w-20 h-20 bg-cover bg-center" style="background-image: url(img/Americano.jpg)"></div>
+                    <button id="M-02" data-idmenu="M-02" data-namamenu='Es Teh' data-hargamenu="Rp. 3000" data-gambar = 'icetea.jpg' data-hg=3000 onclick="cobu(this);" class="btn w-8/12 mt-10 shadow rounded-2xl bg-primary p-4 flex">
+                        <div class="rounded-3xl mr-8 w-20 h-20 bg-cover bg-center" style="background-image: url(img/icetea.jpg)"></div>
                         <div class="py-3 text-secondary">
-                            <h1 class="font-semibold tracking-wider">Americano</h1>
-                            <p class="font-extralight text-left">Rp. 12.000</p>
+                            <h1 class="font-semibold tracking-wider">Es Teh</h1>
+                            <p class="font-extralight text-left">Rp. 3.000</p>
                         </div>
                     </button>
                     {{-- end daftar menu --}}
                     {{-- daftar menu --}}
-                    <button type="text" class="w-8/12 mt-10 shadow rounded-2xl bg-primary p-4 flex ">
-                        <div class="rounded-3xl mr-8 w-20 h-20 bg-cover bg-center" style="background-image: url(img/Americano.jpg)"></div>
+                    <button id="M-03" data-idmenu="M-03" data-namamenu='Matcha' data-hargamenu="Rp. 15.000" data-gambar = 'Matcha.jpeg' data-hg=15000 onclick="cobu(this);" class="btn w-8/12 mt-10 shadow rounded-2xl bg-primary p-4 flex">
+                        <div class="rounded-3xl mr-8 w-20 h-20 bg-cover bg-center" style="background-image: url(img/Matcha.jpeg)"></div>
                         <div class="py-3 text-secondary">
-                            <h1 class="font-semibold tracking-wider">Americano</h1>
-                            <p class="font-extralight text-left">Rp. 12.000</p>
-                        </div>
-                    </button>
-                    {{-- end daftar menu --}}
-                    {{-- daftar menu --}}
-                    <button type="text" class="w-8/12 mt-10 shadow rounded-2xl bg-primary p-4 flex ">
-                        <div class="rounded-3xl mr-8 w-20 h-20 bg-cover bg-center" style="background-image: url(img/Americano.jpg)"></div>
-                        <div class="py-3 text-secondary">
-                            <h1 class="font-semibold tracking-wider">Americano</h1>
-                            <p class="font-extralight text-left">Rp. 12.000</p>
-                        </div>
-                    </button>
-                    {{-- end daftar menu --}}
-                    {{-- daftar menu --}}
-                    <button type="text" class="w-8/12 mt-10 shadow rounded-2xl bg-primary p-4 flex ">
-                        <div class="rounded-3xl mr-8 w-20 h-20 bg-cover bg-center" style="background-image: url(img/Americano.jpg)"></div>
-                        <div class="py-3 text-secondary">
-                            <h1 class="font-semibold tracking-wider">Americano</h1>
-                            <p class="font-extralight text-left">Rp. 12.000</p>
-                        </div>
-                    </button>
-                    {{-- end daftar menu --}}
-                    {{-- daftar menu --}}
-                    <button type="text" class="w-8/12 mt-10 shadow rounded-2xl bg-primary p-4 flex ">
-                        <div class="rounded-3xl mr-8 w-20 h-20 bg-cover bg-center" style="background-image: url(img/Americano.jpg)"></div>
-                        <div class="py-3 text-secondary">
-                            <h1 class="font-semibold tracking-wider">Americano</h1>
-                            <p class="font-extralight text-left">Rp. 12.000</p>
-                        </div>
-                    </button>
-                    {{-- end daftar menu --}}
-                    {{-- daftar menu --}}
-                    <button type="text" class="w-8/12 mt-10 shadow rounded-2xl bg-primary p-4 flex ">
-                        <div class="rounded-3xl mr-8 w-20 h-20 bg-cover bg-center" style="background-image: url(img/Americano.jpg)"></div>
-                        <div class="py-3 text-secondary">
-                            <h1 class="font-semibold tracking-wider">Americano</h1>
-                            <p class="font-extralight text-left">Rp. 12.000</p>
-                        </div>
-                    </button>
-                    {{-- end daftar menu --}}
-                    {{-- daftar menu --}}
-                    <button type="text" class="w-8/12 mt-10 shadow rounded-2xl bg-primary p-4 flex ">
-                        <div class="rounded-3xl mr-8 w-20 h-20 bg-cover bg-center" style="background-image: url(img/Americano.jpg)"></div>
-                        <div class="py-3 text-secondary">
-                            <h1 class="font-semibold tracking-wider">Americano</h1>
-                            <p class="font-extralight text-left">Rp. 12.000</p>
-                        </div>
-                    </button>
-                    {{-- end daftar menu --}}
-                    {{-- daftar menu --}}
-                    <button type="text" class="w-8/12 mt-10 shadow rounded-2xl bg-primary p-4 flex ">
-                        <div class="rounded-3xl mr-8 w-20 h-20 bg-cover bg-center" style="background-image: url(img/Americano.jpg)"></div>
-                        <div class="py-3 text-secondary">
-                            <h1 class="font-semibold tracking-wider">Americano</h1>
-                            <p class="font-extralight text-left">Rp. 12.000</p>
-                        </div>
-                    </button>
-                    {{-- end daftar menu --}}
-                    {{-- daftar menu --}}
-                    <button type="text" class="w-8/12 mt-10 shadow rounded-2xl bg-primary p-4 flex ">
-                        <div class="rounded-3xl mr-8 w-20 h-20 bg-cover bg-center" style="background-image: url(img/Americano.jpg)"></div>
-                        <div class="py-3 text-secondary">
-                            <h1 class="font-semibold tracking-wider">Americano</h1>
-                            <p class="font-extralight text-left">Rp. 12.000</p>
+                            <h1 class="font-semibold tracking-wider">Matcha</h1>
+                            <p class="font-extralight text-left">Rp. 15.000</p>
                         </div>
                     </button>
                     {{-- end daftar menu --}}
@@ -174,189 +117,7 @@
 
                     <h1 class="text-4xl text-secondary  font-semibold tracking-wide">Detail Pesanan</h1>
                 </div>
-                <div class="min-h-screen">
-
-                    {{-- jumlah pesan --}}
-                    <div class="bg-warna-2 rounded-3xl flex flex-col items-center mb-10 py-4 ">
-    
-                        <div class="flex justify-center items-center w-8/12 mb-4">
-                            <div>
-                                <button class="submit px-4 py-1.5 text-secondary font-semibold text-2xl bg-primary rounded-full">-</button>
-                            </div>
-                            <div class="shadow rounded-2xl bg-primary p-4 flex items-center mx-6">
-                                <div class="rounded-3xl mr-8 w-20 h-20 bg-cover bg-center bg-componen" style="background-image: url(img/Americano.jpg)"></div>
-                                <div class="text-secondary mr-12 ">
-                                    <h1 class="font-semibold tracking-wider break-words w-48">Aaaaaaaaaaaaaaaaaaaaaaaa</h1>
-                                    <p class="font-extralight">Rp. 12.000</p>
-                                </div>
-                                <button type="submit">
-                                    <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M29.75 8.47134C25.0325 8.00384 20.2867 7.76301 15.555 7.76301C12.75 7.76301 9.945 7.90468 7.14 8.18801L4.25 8.47134M12.0417 7.04051L12.3533 5.18467C12.58 3.83884 12.75 2.83301 15.1442 2.83301H18.8558C21.25 2.83301 21.4342 3.89551 21.6467 5.19884L21.9583 7.04051M26.7042 12.948L25.7833 27.2138C25.6275 29.438 25.5 31.1663 21.5475 31.1663H12.4525C8.5 31.1663 8.3725 29.438 8.21667 27.2138L7.29583 12.948M14.6342 23.3747H19.3517M13.4583 17.708H20.5417" stroke="#F0719C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </button>
-                            </div>
-                            <div>
-                                <button class="submit px-4 py-1.5 text-secondary font-semibold text-2xl bg-primary rounded-full">+</button>
-                            </div>
-                        </div>
-    
-                        <div class="w-8/12 flex items-center justify-between">
-                            <div class="text-secondary font-semibold tracking-wide">Jumlah Pesan</div>
-                            <input type="number" class="bg-primary text-secondary text-3xl w-20 py-1.5 px-1 text-center rounded-xl font-bold">
-                        </div>
-                    </div>
-                    {{-- end jumlah pesanan --}}
-                    {{-- jumlah pesan --}}
-                    <div class="bg-warna-2 rounded-3xl flex flex-col items-center mb-10 py-4 ">
-    
-                        <div class="flex justify-center items-center w-8/12 mb-4">
-                            <div>
-                                <button class="submit px-4 py-1.5 text-secondary font-semibold text-2xl bg-primary rounded-full">-</button>
-                            </div>
-                            <div class="shadow rounded-2xl bg-primary p-4 flex items-center mx-6">
-                                <div class="rounded-3xl mr-8 w-20 h-20 bg-cover bg-center bg-componen" style="background-image: url(img/Americano.jpg)"></div>
-                                <div class="text-secondary mr-12 ">
-                                    <h1 class="font-semibold tracking-wider break-words w-48">Aaaaaaaaaaaaaaaaaaaaaaaa</h1>
-                                    <p class="font-extralight">Rp. 12.000</p>
-                                </div>
-                                <button type="submit">
-                                    <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M29.75 8.47134C25.0325 8.00384 20.2867 7.76301 15.555 7.76301C12.75 7.76301 9.945 7.90468 7.14 8.18801L4.25 8.47134M12.0417 7.04051L12.3533 5.18467C12.58 3.83884 12.75 2.83301 15.1442 2.83301H18.8558C21.25 2.83301 21.4342 3.89551 21.6467 5.19884L21.9583 7.04051M26.7042 12.948L25.7833 27.2138C25.6275 29.438 25.5 31.1663 21.5475 31.1663H12.4525C8.5 31.1663 8.3725 29.438 8.21667 27.2138L7.29583 12.948M14.6342 23.3747H19.3517M13.4583 17.708H20.5417" stroke="#F0719C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </button>
-                            </div>
-                            <div>
-                                <button class="submit px-4 py-1.5 text-secondary font-semibold text-2xl bg-primary rounded-full">+</button>
-                            </div>
-                        </div>
-    
-                        <div class="w-8/12 flex items-center justify-between">
-                            <div class="text-secondary font-semibold tracking-wide">Jumlah Pesan</div>
-                            <input type="number" class="bg-primary text-secondary text-3xl w-20 py-1.5 px-1 text-center rounded-xl font-bold">
-                        </div>
-                    </div>
-                    {{-- end jumlah pesanan --}}
-                    {{-- jumlah pesan --}}
-                    <div class="bg-warna-2 rounded-3xl flex flex-col items-center mb-10 py-4 ">
-    
-                        <div class="flex justify-center items-center w-8/12 mb-4">
-                            <div>
-                                <button class="submit px-4 py-1.5 text-secondary font-semibold text-2xl bg-primary rounded-full">-</button>
-                            </div>
-                            <div class="shadow rounded-2xl bg-primary p-4 flex items-center mx-6">
-                                <div class="rounded-3xl mr-8 w-20 h-20 bg-cover bg-center bg-componen" style="background-image: url(img/Americano.jpg)"></div>
-                                <div class="text-secondary mr-12 ">
-                                    <h1 class="font-semibold tracking-wider break-words w-48">Aaaaaaaaaaaaaaaaaaaaaaaa</h1>
-                                    <p class="font-extralight">Rp. 12.000</p>
-                                </div>
-                                <button type="submit">
-                                    <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M29.75 8.47134C25.0325 8.00384 20.2867 7.76301 15.555 7.76301C12.75 7.76301 9.945 7.90468 7.14 8.18801L4.25 8.47134M12.0417 7.04051L12.3533 5.18467C12.58 3.83884 12.75 2.83301 15.1442 2.83301H18.8558C21.25 2.83301 21.4342 3.89551 21.6467 5.19884L21.9583 7.04051M26.7042 12.948L25.7833 27.2138C25.6275 29.438 25.5 31.1663 21.5475 31.1663H12.4525C8.5 31.1663 8.3725 29.438 8.21667 27.2138L7.29583 12.948M14.6342 23.3747H19.3517M13.4583 17.708H20.5417" stroke="#F0719C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </button>
-                            </div>
-                            <div>
-                                <button class="submit px-4 py-1.5 text-secondary font-semibold text-2xl bg-primary rounded-full">+</button>
-                            </div>
-                        </div>
-    
-                        <div class="w-8/12 flex items-center justify-between">
-                            <div class="text-secondary font-semibold tracking-wide">Jumlah Pesan</div>
-                            <input type="number" class="bg-primary text-secondary text-3xl w-20 py-1.5 px-1 text-center rounded-xl font-bold">
-                        </div>
-                    </div>
-                    {{-- end jumlah pesanan --}}
-                    {{-- jumlah pesan --}}
-                    <div class="bg-warna-2 rounded-3xl flex flex-col items-center mb-10 py-4 ">
-    
-                        <div class="flex justify-center items-center w-8/12 mb-4">
-                            <div>
-                                <button class="submit px-4 py-1.5 text-secondary font-semibold text-2xl bg-primary rounded-full">-</button>
-                            </div>
-                            <div class="shadow rounded-2xl bg-primary p-4 flex items-center mx-6">
-                                <div class="rounded-3xl mr-8 w-20 h-20 bg-cover bg-center bg-componen" style="background-image: url(img/Americano.jpg)"></div>
-                                <div class="text-secondary mr-12 ">
-                                    <h1 class="font-semibold tracking-wider break-words w-48">Aaaaaaaaaaaaaaaaaaaaaaaa</h1>
-                                    <p class="font-extralight">Rp. 12.000</p>
-                                </div>
-                                <button type="submit">
-                                    <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M29.75 8.47134C25.0325 8.00384 20.2867 7.76301 15.555 7.76301C12.75 7.76301 9.945 7.90468 7.14 8.18801L4.25 8.47134M12.0417 7.04051L12.3533 5.18467C12.58 3.83884 12.75 2.83301 15.1442 2.83301H18.8558C21.25 2.83301 21.4342 3.89551 21.6467 5.19884L21.9583 7.04051M26.7042 12.948L25.7833 27.2138C25.6275 29.438 25.5 31.1663 21.5475 31.1663H12.4525C8.5 31.1663 8.3725 29.438 8.21667 27.2138L7.29583 12.948M14.6342 23.3747H19.3517M13.4583 17.708H20.5417" stroke="#F0719C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </button>
-                            </div>
-                            <div>
-                                <button class="submit px-4 py-1.5 text-secondary font-semibold text-2xl bg-primary rounded-full">+</button>
-                            </div>
-                        </div>
-    
-                        <div class="w-8/12 flex items-center justify-between">
-                            <div class="text-secondary font-semibold tracking-wide">Jumlah Pesan</div>
-                            <input type="number" class="bg-primary text-secondary text-3xl w-20 py-1.5 px-1 text-center rounded-xl font-bold">
-                        </div>
-                    </div>
-                    {{-- end jumlah pesanan --}}
-                    {{-- jumlah pesan --}}
-                    <div class="bg-warna-2 rounded-3xl flex flex-col items-center mb-10 py-4 ">
-    
-                        <div class="flex justify-center items-center w-8/12 mb-4">
-                            <div>
-                                <button class="submit px-4 py-1.5 text-secondary font-semibold text-2xl bg-primary rounded-full">-</button>
-                            </div>
-                            <div class="shadow rounded-2xl bg-primary p-4 flex items-center mx-6">
-                                <div class="rounded-3xl mr-8 w-20 h-20 bg-cover bg-center bg-componen" style="background-image: url(img/Americano.jpg)"></div>
-                                <div class="text-secondary mr-12 ">
-                                    <h1 class="font-semibold tracking-wider break-words w-48">Aaaaaaaaaaaaaaaaaaaaaaaa</h1>
-                                    <p class="font-extralight">Rp. 12.000</p>
-                                </div>
-                                <button type="submit">
-                                    <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M29.75 8.47134C25.0325 8.00384 20.2867 7.76301 15.555 7.76301C12.75 7.76301 9.945 7.90468 7.14 8.18801L4.25 8.47134M12.0417 7.04051L12.3533 5.18467C12.58 3.83884 12.75 2.83301 15.1442 2.83301H18.8558C21.25 2.83301 21.4342 3.89551 21.6467 5.19884L21.9583 7.04051M26.7042 12.948L25.7833 27.2138C25.6275 29.438 25.5 31.1663 21.5475 31.1663H12.4525C8.5 31.1663 8.3725 29.438 8.21667 27.2138L7.29583 12.948M14.6342 23.3747H19.3517M13.4583 17.708H20.5417" stroke="#F0719C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </button>
-                            </div>
-                            <div>
-                                <button class="submit px-4 py-1.5 text-secondary font-semibold text-2xl bg-primary rounded-full">+</button>
-                            </div>
-                        </div>
-    
-                        <div class="w-8/12 flex items-center justify-between">
-                            <div class="text-secondary font-semibold tracking-wide">Jumlah Pesan</div>
-                            <input type="number" class="bg-primary text-secondary text-3xl w-20 py-1.5 px-1 text-center rounded-xl font-bold">
-                        </div>
-                    </div>
-                    {{-- end jumlah pesanan --}}
-                    {{-- jumlah pesan --}}
-                    <div class="bg-warna-2 rounded-3xl flex flex-col items-center mb-10 py-4 ">
-    
-                        <div class="flex justify-center items-center w-8/12 mb-4">
-                            <div>
-                                <button class="submit px-4 py-1.5 text-secondary font-semibold text-2xl bg-primary rounded-full">-</button>
-                            </div>
-                            <div class="shadow rounded-2xl bg-primary p-4 flex items-center mx-6">
-                                <div class="rounded-3xl mr-8 w-20 h-20 bg-cover bg-center bg-componen" style="background-image: url(img/Americano.jpg)"></div>
-                                <div class="text-secondary mr-12 ">
-                                    <h1 class="font-semibold tracking-wider break-words w-48">Aaaaaaaaaaaaaaaaaaaaaaaa</h1>
-                                    <p class="font-extralight">Rp. 12.000</p>
-                                </div>
-                                <button type="submit">
-                                    <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M29.75 8.47134C25.0325 8.00384 20.2867 7.76301 15.555 7.76301C12.75 7.76301 9.945 7.90468 7.14 8.18801L4.25 8.47134M12.0417 7.04051L12.3533 5.18467C12.58 3.83884 12.75 2.83301 15.1442 2.83301H18.8558C21.25 2.83301 21.4342 3.89551 21.6467 5.19884L21.9583 7.04051M26.7042 12.948L25.7833 27.2138C25.6275 29.438 25.5 31.1663 21.5475 31.1663H12.4525C8.5 31.1663 8.3725 29.438 8.21667 27.2138L7.29583 12.948M14.6342 23.3747H19.3517M13.4583 17.708H20.5417" stroke="#F0719C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </button>
-                            </div>
-                            <div>
-                                <button class="submit px-4 py-1.5 text-secondary font-semibold text-2xl bg-primary rounded-full">+</button>
-                            </div>
-                        </div>
-    
-                        <div class="w-8/12 flex items-center justify-between">
-                            <div class="text-secondary font-semibold tracking-wide">Jumlah Pesan</div>
-                            <input type="number" class="bg-primary text-secondary text-3xl w-20 py-1.5 px-1 text-center rounded-xl font-bold">
-                        </div>
-                    </div>
-                    {{-- end jumlah pesanan --}}
-                </div>
+                <div id='listmenu' class="min-h-screen"></div>
 
             
 
@@ -364,10 +125,10 @@
             <div class="flex items-center pb-10 pt-4 bg-primary justify-between sticky bottom-0 justify-self-end text-secondary">
                 <div>
                     <p class="font-light">Total Harga</p>
-                    <h1 class="text-4xl font-bold text-warna-3 ">Rp. 44.000</h1>
+                    <h1 id="totalhg" class="text-4xl font-bold text-warna-3 ">Rp. 40.000.000</h1>
                 </div>
                 <div>
-                    <button type="submit" class="bg-sidebar text-secondary text-xl p-5 rounded-xl font-semibold">Submit</button>
+                    <button type="submit" class="bg-sidebar text-secondary text-xl py-5 px-10 rounded-xl font-semibold">Submit</button>
                 </div>
             </div>
             {{-- end total harga --}}
@@ -376,5 +137,156 @@
 
         
     </div>
+    <script>
+
+        
+        let lm = document.getElementById('listmenu');  
+        var ttlObj = document.getElementById('totalhg');  
+        let lstm = [];
+        let lstidm=[];
+        let lsthg=[];
+        let buttons = document.querySelectorAll('.btn');
+        var total =0;
+
+        buttons.forEach(button => {
+            button.addEventListener('click', function (){
+                this.classList.add('addorder');
+            });
+        })
+
+
+        function hasClass( target, className ) {
+            return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
+        }
+
+
+
+        function cobu(d){
+            const ss =  d.getAttribute("data-idmenu");
+            const nama =d.getAttribute("data-namamenu");
+            const harga =d.getAttribute("data-hargamenu");
+            const gambar =d.getAttribute("data-gambar");
+            const hg =d.getAttribute("data-hg");
+
+
+
+            let oo = `<div class="bg-warna-2 rounded-3xl flex flex-col items-center ${ss} mb-10 py-4">
+                        <div class="flex justify-center items-center w-8/12 mb-4">
+                            <div>
+                                <button data-idm=${ss} data-hg=${hg} onclick='krval(this);' class="submit px-4 py-1.5 text-secondary font-semibold text-2xl bg-primary rounded-full">-</button>
+                            </div>
+                            <div class="shadow rounded-2xl bg-primary p-4 flex items-center mx-6">
+                                <div class="rounded-3xl mr-8 w-20 h-20 bg-cover bg-center bg-componen" style="background-image: url(img/${gambar})"></div>
+                                <div class="text-secondary mr-12 ">
+                                    <h1 class="font-semibold tracking-wider break-words w-48"> ${nama}</h1>
+                                    <p class="font-extralight">${harga}</p>
+                                </div>
+                                <button data-idm=${ss} data-hg=${hg} onclick='hps(this);'>
+                                    <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M29.75 8.47134C25.0325 8.00384 20.2867 7.76301 15.555 7.76301C12.75 7.76301 9.945 7.90468 7.14 8.18801L4.25 8.47134M12.0417 7.04051L12.3533 5.18467C12.58 3.83884 12.75 2.83301 15.1442 2.83301H18.8558C21.25 2.83301 21.4342 3.89551 21.6467 5.19884L21.9583 7.04051M26.7042 12.948L25.7833 27.2138C25.6275 29.438 25.5 31.1663 21.5475 31.1663H12.4525C8.5 31.1663 8.3725 29.438 8.21667 27.2138L7.29583 12.948M14.6342 23.3747H19.3517M13.4583 17.708H20.5417" stroke="#F0719C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div>
+                                <button data-idm=${ss} data-hg=${hg} onclick='tmbhval(this);' class="submit px-4 py-1.5 text-secondary font-semibold text-2xl bg-primary rounded-full">+</button>
+                            </div>
+                        </div>
+
+                        <div class="w-8/12 flex items-center justify-between">
+                            <div class="text-secondary font-semibold tracking-wide">Jumlah Pesan</div>
+                            <input id=${ss}-inp disabled type="number" min="1" class="bg-primary text-secondary text-3xl w-20 py-1.5 px-1 text-center rounded-xl font-bold" value=1>
+                        </div>
+                    </div>`;
+
+
+            // console.log(hasClass(d,"terklik"));
+            if (!hasClass(d,"terklik")) {
+                lstm.push(oo);
+                lstidm.push(ss);
+                lsthg.push(1);
+
+                let cobustr = '';
+                for(let i=0;i<lstm.length;i++)
+                {
+                    cobustr+=lstm[i];
+                }
+                console.log(cobustr);
+                lm.innerHTML = cobustr;
+                d.classList.add('terklik');
+                total+= Number(hg);
+                ttlObj.innerHTML = total;
+            }
+            
+            // alert(d.getAttribute("data-idmenu")+cobustr);
+        }
+
+
+
+
+
+        function hps(d)
+        {
+            let buttons = document.querySelectorAll('.addorder');
+            const hg = d.getAttribute("data-hg");
+
+            let ssd = document.getElementById(d.getAttribute("data-idm"));
+            let da = document.getElementById(d.getAttribute("data-idm")+"-inp");
+            ssd.classList.remove('addorder');
+            ssd.classList.remove('terklik');
+
+            let a1 = lstidm.indexOf(d.getAttribute("data-idm"));
+            lstm.splice(a1,1);
+            lstidm.splice(a1,1);
+            let cobustr = '';
+            for(let i=0;i<lstm.length;i++)
+            {
+                cobustr+=lstm[i];
+            }
+            console.log(cobustr);
+            lm.innerHTML = cobustr;
+            total-=Number(hg*da.value);
+            ttlObj.innerHTML = total;
+
+        }
+
+
+
+
+
+
+        function tmbhval (d) {
+            const nama = d.getAttribute("data-idm");
+            const hg = d.getAttribute("data-hg");
+
+            let ssd = document.getElementById(nama+"-inp");
+            ssd.value = Number(ssd.value)+1;
+            total+= Number(hg);
+            console.log(hg);
+            ttlObj.innerHTML = total;
+        }
+
+
+
+
+
+        function krval (d) {
+            const nama = d.getAttribute("data-idm");
+            const hg = d.getAttribute("data-hg");
+
+            let ssd = document.getElementById(nama+"-inp");
+            if(Number(ssd.value) > 1)
+            {
+                ssd.value = Number(ssd.value)-1;
+                total-=Number(hg);
+                console.log(total);
+                ttlObj.innerHTML = total;
+                
+            }
+            
+
+        }
+
+
+    </script>
 </body>
 </html>
