@@ -28,3 +28,7 @@ Route::get('/admin/kasir', function () {
 Route::get('/admin/manager', function () {
     return view('admin.manager');
 });
+
+Route::get('/admin/menu', function () {
+    return view('admin.menu');
+});

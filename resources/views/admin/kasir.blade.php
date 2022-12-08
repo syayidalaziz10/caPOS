@@ -101,7 +101,7 @@
                     </thead>
                     <tbody>
                         {{-- data user --}}
-                        <tr></tr>
+
                         
                         <tr>
                             <td class="bg-primary rounded-xl">1</td>
@@ -177,13 +177,15 @@
                                     </div>
                                 </label>
                             </div>
+                        </div>
                     </div>
+                    <div>
                         
-                    </div>
-                    <!-- Modal footer -->
-                    <div class="flex items-center justify-end w-full px-12 py-6 space-x-2 rounded-xl bg-warna-4">
-                        <button data-modal-toggle="staticModal" type="button" class="text-primary bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">Batal</button>
-                        <button data-modal-toggle="staticModal" type="button" class="text-white bg-componen hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Tambah User</button>
+                        <!-- Modal footer -->
+                            <div class="flex items-center justify-end w-full px-12 py-6 space-x-2 rounded-xl bg-warna-4">
+                                <button data-modal-toggle="staticModal" type="button" class="text-primary bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">Batal</button>
+                                <button data-modal-toggle="staticModal" type="button" class="text-white bg-componen hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Tambah User</button>
+                            </div>
                     </div>
                 </div>
             </div>
@@ -235,7 +237,7 @@
                                     <label class="text-secondary text-sm">Gambar</label>
                                     <label class="block text-secondary mt-2">
                                         <div style="background-image: url('/img/profil.jpg'); " class="bg-primary rounded-xl w-full h-32 flex justify-center items-center relative bg-cover bg-center" >
-                                            <input type="file" id="profil" class="invisible absolute top-0">
+                                    
                                         </div>
                                     </label>
                                 </div>
@@ -252,6 +254,7 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
                     <!-- modal footer -->
                     <div class="flex items-center justify-end w-full px-12 py-6 space-x-2 rounded-xl bg-warna-4">
                         <button data-modal-toggle="staticModalEdit" type="button" class="text-primary bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">Batal</button>

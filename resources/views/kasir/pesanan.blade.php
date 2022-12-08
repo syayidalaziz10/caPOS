@@ -174,7 +174,7 @@
 
                     <h1 class="text-4xl text-secondary  font-semibold tracking-wide">Detail Pesanan</h1>
                 </div>
-                <div class="h-min-screen">
+                <div class="min-h-screen">
 
                     {{-- jumlah pesan --}}
                     <div class="bg-warna-2 rounded-3xl flex flex-col items-center mb-10 py-4 ">
@@ -206,7 +206,6 @@
                         </div>
                     </div>
                     {{-- end jumlah pesanan --}}
-
                     {{-- jumlah pesan --}}
                     <div class="bg-warna-2 rounded-3xl flex flex-col items-center mb-10 py-4 ">
     
@@ -237,7 +236,6 @@
                         </div>
                     </div>
                     {{-- end jumlah pesanan --}}
-
                     {{-- jumlah pesan --}}
                     <div class="bg-warna-2 rounded-3xl flex flex-col items-center mb-10 py-4 ">
     
@@ -268,7 +266,6 @@
                         </div>
                     </div>
                     {{-- end jumlah pesanan --}}
-
                     {{-- jumlah pesan --}}
                     <div class="bg-warna-2 rounded-3xl flex flex-col items-center mb-10 py-4 ">
     
@@ -299,7 +296,6 @@
                         </div>
                     </div>
                     {{-- end jumlah pesanan --}}
-
                     {{-- jumlah pesan --}}
                     <div class="bg-warna-2 rounded-3xl flex flex-col items-center mb-10 py-4 ">
     
@@ -330,38 +326,6 @@
                         </div>
                     </div>
                     {{-- end jumlah pesanan --}}
-
-                    {{-- jumlah pesan --}}
-                    <div class="bg-warna-2 rounded-3xl flex flex-col items-center mb-10 py-4 ">
-    
-                        <div class="flex justify-center items-center w-8/12 mb-4">
-                            <div>
-                                <button class="submit px-4 py-1.5 text-secondary font-semibold text-2xl bg-primary rounded-full">-</button>
-                            </div>
-                            <div class="shadow rounded-2xl bg-primary p-4 flex items-center mx-6">
-                                <div class="rounded-3xl mr-8 w-20 h-20 bg-cover bg-center bg-componen" style="background-image: url(img/Americano.jpg)"></div>
-                                <div class="text-secondary mr-12 ">
-                                    <h1 class="font-semibold tracking-wider break-words w-48">Aaaaaaaaaaaaaaaaaaaaaaaa</h1>
-                                    <p class="font-extralight">Rp. 12.000</p>
-                                </div>
-                                <button type="submit">
-                                    <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M29.75 8.47134C25.0325 8.00384 20.2867 7.76301 15.555 7.76301C12.75 7.76301 9.945 7.90468 7.14 8.18801L4.25 8.47134M12.0417 7.04051L12.3533 5.18467C12.58 3.83884 12.75 2.83301 15.1442 2.83301H18.8558C21.25 2.83301 21.4342 3.89551 21.6467 5.19884L21.9583 7.04051M26.7042 12.948L25.7833 27.2138C25.6275 29.438 25.5 31.1663 21.5475 31.1663H12.4525C8.5 31.1663 8.3725 29.438 8.21667 27.2138L7.29583 12.948M14.6342 23.3747H19.3517M13.4583 17.708H20.5417" stroke="#F0719C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </button>
-                            </div>
-                            <div>
-                                <button class="submit px-4 py-1.5 text-secondary font-semibold text-2xl bg-primary rounded-full">+</button>
-                            </div>
-                        </div>
-    
-                        <div class="w-8/12 flex items-center justify-between">
-                            <div class="text-secondary font-semibold tracking-wide">Jumlah Pesan</div>
-                            <input type="number" class="bg-primary text-secondary text-3xl w-20 py-1.5 px-1 text-center rounded-xl font-bold">
-                        </div>
-                    </div>
-                    {{-- end jumlah pesanan --}}
-
                     {{-- jumlah pesan --}}
                     <div class="bg-warna-2 rounded-3xl flex flex-col items-center mb-10 py-4 ">
     
