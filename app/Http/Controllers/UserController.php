@@ -75,6 +75,7 @@ class UserController extends Controller
         if($request->file('gambar')){
             $validatedData['gambar'] = $request->file('gambar')->store('post-images');
         }
+        $validateData['password'] = Hash::make($request['password']);
         // $user->save();
         User::create($validatedData);
         // $validatedData->save();
