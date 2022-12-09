@@ -79,7 +79,11 @@
                     </div>
                     <div>
                         <label for="kategori" class="block text-secondary text-sm mb-2">Kategori</label>
-                        <input type="text" id="kategori" class="w-full bg-primary py-2 px-6 rounded-xl text-secondary">
+                        {{-- <input type="text" id="kategori" class="w-full bg-primary py-2 px-6 rounded-xl text-secondary"> --}}
+                        <select name="" id="kategori" class="w-full bg-primary py-2 px-6 rounded-xl text-secondary">
+                            <option value="makanan">Makanan</option>
+                            <option value="minuman">Minuman</option>
+                        </select>
                     </div>
                     <div>
                         <label class="text-secondary text-sm">Gambar</label>
@@ -136,7 +140,10 @@
                     </div>
                     <div>
                         <label for="username" class="block text-secondary text-sm mb-2">Kategori</label>
-                        <input type="text" id="username" class="w-full bg-primary py-2 px-6 rounded-xl text-secondary">
+                        <select name="" id="kategori" class="w-full bg-primary py-2 px-6 rounded-xl text-secondary">
+                            <option value="makanan">Makanan</option>
+                            <option value="minuman">Minuman</option>
+                        </select>
                     </div>
 
                     <div class="flex justify-center items-center space-x-12">
