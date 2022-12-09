@@ -43,4 +43,25 @@ Route::get('/password', [UserController::class, 'password'])->name('password');
 Route::post('/password', [UserController::class, 'password_action'])->name('password.action');
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 Route::resource('menu', MenuController::class);
+
+Route::get('/', function () {
+    return view('login');
+});
+
+Route::get('/kasir', function () {
+    return view('kasir.pesanan');
+});
+
+Route::get('/admin/kasir', function () {
+    return view('admin.kasir',["page" => "kasir"]);
+});
+
+Route::get('/admin/manager', function () {
+    return view('admin.manager',["page" => "manager"]);
+});
+
+Route::get('/admin/menu', function () {
+    return view('admin.menu',["page" => "menu"]);
+});
 // Route::resource('user', UserController::class);
+
