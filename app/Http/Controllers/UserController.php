@@ -14,7 +14,7 @@ class UserController extends Controller
         if(Auth::check()){
             $user = Auth::user();
             if ($user->level == 'admin') {
-                return redirect()->intended('admin');
+                return redirect(admin);
             }
             else if ($user->level == 'kasir') {
                 return redirect()->intended('kasir');
@@ -44,7 +44,10 @@ class UserController extends Controller
         $data['title'] = 'Data Kasir';
         $data['q'] = $request->get('q');
         $data['users'] = User::where('level', '=', 'kasir')
-        ->where(function($query) use($data){$query->where('nama', 'like', '%' .$data['q']. '%')->orWhere('username', 'like', '%' .$data['q']. '%')->orWhere('no_hp', 'like', '%' .$data['q']. '%');})->get();
+        ->where(function($query) use($data){
+        $query->where('nama', 'like', '%' .$data['q']. '%')
+        ->orWhere('username', 'like', '%' .$data['q']. '%')
+        ->orWhere('no_hp', 'like', '%' .$data['q']. '%');})->get();
         return view('user/kasir', $data);
     }
     public function manajer(Request $request){
