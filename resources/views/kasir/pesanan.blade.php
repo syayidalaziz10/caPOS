@@ -131,6 +131,7 @@
                     <form action="{{ route('register.action') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input id="valMenu" type="hidden" name="valPesan">
+                        <input id="valJml" type="hidden" name="valJml">
                         <button type="submit" data-token="{{csrf_token()}}" onclick="tmbh();" class="bg-sidebar text-secondary text-xl py-5 px-10 rounded-xl font-semibold">Submit</button>
                     </form>
                 </div>
@@ -144,11 +145,12 @@
     <script>
 
         let valM = document.getElementById('valMenu');
+        let valJ = document.getElementById('valJml');
         let lm = document.getElementById('listmenu');  
         var ttlObj = document.getElementById('totalhg');  
         let lstm = [];
         let lstidm=[];
-        let lstVal=[];
+        let lstVal=[1,2,3];
         let lsthg=[];
         let buttons = document.querySelectorAll('.btn');
         var total =0;
@@ -156,6 +158,7 @@
         function tmbh(d)
         {
             valM.value = lstidm;
+            valJ.value = lstVal;
             
             // let token = d.getAttribute("data-token");
             // console.log(token);
@@ -183,6 +186,7 @@
             const harga =d.getAttribute("data-hargamenu");
             const gambar =d.getAttribute("data-gambar");
             const hg =d.getAttribute("data-hg");
+            let da = document.getElementById(d.getAttribute("data-idm")+"-inp");
 
 
 
@@ -214,12 +218,12 @@
                         </div>
                     </div>`;
 
-
             // console.log(hasClass(d,"terklik"));
             if (!hasClass(d,"terklik")) {
                 lstm.push(oo);
                 lstidm.push(ss);
-                lsthg.push(1);
+                
+                lsthg.push(d.value);
 
                 let cobustr = '';
                 for(let i=0;i<lstm.length;i++)
