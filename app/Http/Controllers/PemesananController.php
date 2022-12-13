@@ -43,6 +43,7 @@ class PemesananController extends Controller
      */
     public function store(Request $request)
     {
+        ddd($request);
         $pemesanan = new Pemesanan([
             'id_user' => Auth::user()->id_user,
             'tanggal_pemesanan' => Carbon::today()->toDateString(),
@@ -60,6 +61,16 @@ class PemesananController extends Controller
         $detailPemesanan->save();
         $menu = Menu::where('id_menu', $request->id_menu);
         return redirect()->route('pemesanan.index')->with('success', 'Success Creating pemesanan');
+    }
+
+    public function pemesanan(){
+        $data = [
+            'title' => "Data Kasir",
+            'page'  => "kasir",
+        ];
+       
+        // $data['users'] = User::where('level', '=', 'kasir')->get();
+        return view('kasir/pesanan', $data);
     }
 
     /**

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\PemesananController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,7 +30,7 @@ Route::get('/kasir', function () {
 // })->name('user.edit');
 
 Route::get('/register', [UserController::class, 'register'])->name('register');
-Route::get('/kasir', [UserController::class, 'kasir'])->name('user.kasir');
+Route::get('/kasir', [PemesananController::class, 'pemesanan'])->name('kasir.pemesanan');
 Route::get('/manajer', [UserController::class, 'manajer'])->name('user.manajer');
 Route::get('/user/createkasir', [UserController::class, 'createKasir'])->name('user.createKasir');
 Route::get('/user/createmanajer', [UserController::class, 'createManajer'])->name('user.createManajer');
@@ -45,7 +46,7 @@ Route::get('/password', [UserController::class, 'password'])->name('password');
 Route::post('/password', [UserController::class, 'password_action'])->name('password.action');
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 Route::resource('menu', MenuController::class);
-
+Route::resource('pemesanan', PemesananController::class);
 
 
 // Route::get('/kasir', function () {

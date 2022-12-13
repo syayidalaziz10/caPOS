@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     @vite('resources/css/app.css')
     <title>caPOS | Pesanan</title>
     <style>
@@ -14,7 +15,6 @@
 </head>
 <body class="font-body">
     <div class="flex">
-
 
         {{-- sidebar --}}
         <div class="bg-warna-2">
@@ -128,8 +128,11 @@
                     <h1 id="totalhg" class="text-4xl font-bold text-warna-3 ">Rp. 40.000.000</h1>
                 </div>
                 <div>
-                    <input type="hidden" name="valPesan">
-                    <button type="submit" class="bg-sidebar text-secondary text-xl py-5 px-10 rounded-xl font-semibold">Submit</button>
+                    <form action="{{ route('register.action') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <input id="valMenu" type="hidden" name="valPesan">
+                        <button type="submit" data-token="{{csrf_token()}}" onclick="tmbh();" class="bg-sidebar text-secondary text-xl py-5 px-10 rounded-xl font-semibold">Submit</button>
+                    </form>
                 </div>
             </div>
             {{-- end total harga --}}
@@ -140,7 +143,7 @@
     </div>
     <script>
 
-        
+        let valM = document.getElementById('valMenu');
         let lm = document.getElementById('listmenu');  
         var ttlObj = document.getElementById('totalhg');  
         let lstm = [];
@@ -149,6 +152,17 @@
         let lsthg=[];
         let buttons = document.querySelectorAll('.btn');
         var total =0;
+        
+        function tmbh(d)
+        {
+            valM.value = lstidm;
+            
+            // let token = d.getAttribute("data-token");
+            // console.log(token);
+            // const xhttp = new XMLHttpRequest();
+            // xhttp.open("POST", [token,"http://localhost:8000/register/"]);
+            // xhttp.send(lstidm);
+        }
 
         buttons.forEach(button => {
             button.addEventListener('click', function (){
@@ -223,19 +237,6 @@
         }
 
 
-        [
-        {
-
-            idmenu : 38223,
-            jml:4
-
-        }, {
-
-            idmenu : 34234,
-            jml:2
-
-        }, 
-    ]
 
         function hps(d)
         {

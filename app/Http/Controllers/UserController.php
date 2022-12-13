@@ -93,33 +93,34 @@ class UserController extends Controller
         $data['menu'] = Menu::get();
         return view('admin/menu', $data);
     }
-    public function register_action(request $request){
-        $validatedData = $request->validate([
-            'nama' => 'required|max:50',
-            'username' => 'required|unique:user|max:16|min:8',
-            'password' => 'required|min:8',
-            'password_confirmation' => 'required|same:password',
-            'level' => 'required',
-            'tanggal_lahir' => 'required',
-            'alamat' => 'required',
-            'jenis_kelamin' => 'required',
-            'no_hp' => 'required|numeric',
-            'gambar' => 'required'
-        ]);
-        $validatedData['password'] = Hash::make($validatedData['password']);
-        if($request->file('gambar')){
-            $validatedData['gambar'] = $request->file('gambar')->store('post-images');
-        }
+    public function register_action(Request $request){
+        ddd($request);
+        // $validatedData = $request->validate([
+        //     'nama' => 'required|max:50',
+        //     'username' => 'required|unique:user|max:16|min:8',
+        //     'password' => 'required|min:8',
+        //     'password_confirmation' => 'required|same:password',
+        //     'level' => 'required',
+        //     'tanggal_lahir' => 'required',
+        //     'alamat' => 'required',
+        //     'jenis_kelamin' => 'required',
+        //     'no_hp' => 'required|numeric',
+        //     'gambar' => 'required'
+        // ]);
+        // $validatedData['password'] = Hash::make($validatedData['password']);
+        // if($request->file('gambar')){
+        //     $validatedData['gambar'] = $request->file('gambar')->store('post-images');
+        // }
         
-        // $user->save();
-        User::create($validatedData);
-        // $validatedData->save();
-        if ($request->level == 'kasir') {
-            return redirect()->route('admin')->with('success', 'Registration Success Please Login');
-        } else if($request->level == 'manajer'){
-            return redirect()->route('admin.manajer')->with('success', 'Registration Success Please Login');
-        }
-        return redirect()->route('home')->with('success', 'Registration Success Please Login');
+        // // $user->save();
+        // User::create($validatedData);
+        // // $validatedData->save();
+        // if ($request->level == 'kasir') {
+        //     return redirect()->route('admin')->with('success', 'Registration Success Please Login');
+        // } else if($request->level == 'manajer'){
+        //     return redirect()->route('admin.manajer')->with('success', 'Registration Success Please Login');
+        // }
+        // return redirect()->route('home')->with('success', 'Registration Success Please Login');
 
     }
 
