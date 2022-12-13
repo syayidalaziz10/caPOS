@@ -128,6 +128,7 @@
                     <h1 id="totalhg" class="text-4xl font-bold text-warna-3 ">Rp. 40.000.000</h1>
                 </div>
                 <div>
+                    <input type="hidden" name="valPesan">
                     <button type="submit" class="bg-sidebar text-secondary text-xl py-5 px-10 rounded-xl font-semibold">Submit</button>
                 </div>
             </div>
@@ -144,6 +145,7 @@
         var ttlObj = document.getElementById('totalhg');  
         let lstm = [];
         let lstidm=[];
+        let lstVal=[];
         let lsthg=[];
         let buttons = document.querySelectorAll('.btn');
         var total =0;
@@ -210,7 +212,7 @@
                 {
                     cobustr+=lstm[i];
                 }
-                console.log(cobustr);
+                console.log(lstidm);
                 lm.innerHTML = cobustr;
                 d.classList.add('terklik');
                 total+= Number(hg);
@@ -221,8 +223,19 @@
         }
 
 
+        [
+        {
 
+            idmenu : 38223,
+            jml:4
 
+        }, {
+
+            idmenu : 34234,
+            jml:2
+
+        }, 
+    ]
 
         function hps(d)
         {
