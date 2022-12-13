@@ -2,7 +2,7 @@
 @include('admin.template.sidebar')
 
 @section('content')
-
+<?php $i=1; ?>
 {{-- main menu --}}
 <div class="flex w-full justify-center">
     <input type="text" placeholder="Cari Menu" class="text-white w-full rounded-2xl my-12 py-3 px-16 bg-warna-2 text-secondary text-md">

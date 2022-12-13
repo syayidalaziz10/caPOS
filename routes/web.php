@@ -16,11 +16,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [UserController::class, 'home'])->name('home');
-Route::get('/admin', function () {
-    return view('admin', ['title' => 'admin']);
-})->name('admin');
+Route::get('/admin', [UserController::class, 'adminKasir'])->name('admin');
+Route::get('/admin/kasir', [UserController::class, 'adminKasir'])->name('admin.kasir');
+Route::get('/admin/manajer', [UserController::class, 'adminManajer'])->name('admin.manajer');
+Route::get('/admin/menu', [UserController::class, 'adminMenu'])->name('admin.menu');
 Route::get('/kasir', function () {
-    return view('kasir', ['title' => 'kasir']);
+    $data = ['title' => 'kasir'];
+    return view('kasir/pesanan', $data );
 })->name('kasir');
 // Route::get('/user/edit', function () {
 //     return view('user/edit', ['title' => 'kasir',$user]);
@@ -44,24 +46,22 @@ Route::post('/password', [UserController::class, 'password_action'])->name('pass
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 Route::resource('menu', MenuController::class);
 
-Route::get('/', function () {
-    return view('login');
-});
 
-Route::get('/kasir', function () {
-    return view('kasir.pesanan');
-});
 
-Route::get('/admin/kasir', function () {
-    return view('admin.kasir',["page" => "kasir"]);
-});
+// Route::get('/kasir', function () {
+//     return view('kasir.pesanan');
+// });
 
-Route::get('/admin/manager', function () {
-    return view('admin.manager',["page" => "manager"]);
-});
+// Route::get('/admin/kasir', function () {
+//     return view('admin.kasir',["page" => "kasir"]);
+// });
 
-Route::get('/admin/menu', function () {
-    return view('admin.menu',["page" => "menu"]);
-});
+// Route::get('/admin/manager', function () {
+//     return view('admin.manager',["page" => "manager"]);
+// });
+
+// Route::get('/admin/menu', function () {
+//     return view('admin.menu',["page" => "menu"]);
+// });
 // Route::resource('user', UserController::class);
 

@@ -11,7 +11,7 @@
             @csrf
             <div class="mb-3">
                 <label for="">Name <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+                <input type="text" class="form-control" name="nama" value="{{ old('name') }}">
             </div>
             <div class="mb-3">
                 <label for="">Username <span class="text-danger">*</span></label>
