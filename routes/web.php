@@ -20,15 +20,18 @@ Route::get('/', function () {
 Route::get('/kasir', function () {
     return view('kasir.pesanan');
 });
+Route::get('/detail', function () {
+    return view('kasir.detail');
+});
 
 Route::get('/admin/kasir', function () {
-    return view('admin.kasir',["page" => "kasir"]);
+    return view('admin.kasir', ["page" => "kasir"]);
 });
 
 Route::get('/admin/manager', function () {
-    return view('admin.manager',["page" => "manager"]);
+    return view('admin.manager', ["page" => "manager"]);
 });
 
 Route::get('/admin/menu', function () {
-    return view('admin.menu',["page" => "menu"]);
+    return view('admin.menu', ["page" => "menu"]);
 });
