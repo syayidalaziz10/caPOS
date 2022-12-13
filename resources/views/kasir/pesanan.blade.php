@@ -125,7 +125,7 @@
             <div class="flex items-center pb-10 pt-4 bg-primary justify-between sticky bottom-0 justify-self-end text-secondary">
                 <div>
                     <p class="font-light">Total Harga</p>
-                    <h1 id="totalhg" class="text-4xl font-bold text-warna-3 ">Rp. 40.000.000</h1>
+                    <h1 id="totalhg" class="text-4xl font-bold text-warna-3 ">Rp. 0</h1>
                 </div>
                 <div>
                     <button type="submit" class="bg-sidebar text-secondary text-xl py-5 px-10 rounded-xl font-semibold">Submit</button>
@@ -214,7 +214,7 @@
                 lm.innerHTML = cobustr;
                 d.classList.add('terklik');
                 total+= Number(hg);
-                ttlObj.innerHTML = total;
+                ttlObj.innerHTML = formatRupiah(String(total), 'Rp. ');
             }
             
             // alert(d.getAttribute("data-idmenu")+cobustr);
@@ -245,7 +245,7 @@
             console.log(cobustr);
             lm.innerHTML = cobustr;
             total-=Number(hg*da.value);
-            ttlObj.innerHTML = total;
+            ttlObj.innerHTML = formatRupiah(String(total), 'Rp. ');
 
         }
 
@@ -262,7 +262,7 @@
             ssd.value = Number(ssd.value)+1;
             total+= Number(hg);
             console.log(hg);
-            ttlObj.innerHTML = total;
+            ttlObj.innerHTML = formatRupiah(String(total), 'Rp. ');
         }
 
 
@@ -279,12 +279,30 @@
                 ssd.value = Number(ssd.value)-1;
                 total-=Number(hg);
                 console.log(total);
-                ttlObj.innerHTML = total;
+                ttlObj.innerHTML = formatRupiah(String(total), 'Rp. ');
                 
             }
             
 
         }
+
+        /* Fungsi formatRupiah */
+		function formatRupiah(angka, prefix){
+			var number_string = angka.replace(/[^,\d]/g, '').toString(),
+			split   		= number_string.split(','),
+			sisa     		= split[0].length % 3,
+			rupiah     		= split[0].substr(0, sisa),
+			ribuan     		= split[0].substr(sisa).match(/\d{3}/gi);
+
+			// tambahkan titik jika yang di input sudah menjadi angka ribuan
+			if(ribuan){
+				separator = sisa ? '.' : '';
+				rupiah += separator + ribuan.join('.');
+			}
+
+			rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+			return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+		}
 
 
     </script>

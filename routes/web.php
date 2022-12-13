@@ -20,8 +20,14 @@ Route::get('/', function () {
 Route::get('/kasir', function () {
     return view('kasir.pesanan');
 });
+
 Route::get('/detail', function () {
     return view('kasir.detail');
+});
+
+
+Route::get('/admin', function () {
+    return view('admin.beranda', ["page" => "beranda"]);
 });
 
 Route::get('/admin/kasir', function () {
