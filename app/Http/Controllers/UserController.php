@@ -74,8 +74,12 @@ class UserController extends Controller
         $data = [
             'title' => "Beranda",
             'page'  => "beranda",
-            'q'     => $request->get('q')
+            'q'     => $request->get('q'),
+            'kasir' => User::where('level', '=', 'kasir')->count(),
+            'menu' => Menu::count(),
+            'manager' => User::where('level', '=', 'manajer')->count()
         ];
+
 
         return view('/admin/beranda', $data);
     }
@@ -225,8 +229,9 @@ class UserController extends Controller
     //     return view('user.edit', $data);
     // }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
+        // ddd($request);
         $validatedData = $request->validate([
             'nama' => 'required|max:50',
             'username' => 'required|max:16|min:8',
@@ -245,11 +250,9 @@ class UserController extends Controller
             $validatedData['gambar'] = $request->file('gambar')->store('menu-images');
         }
 
-        $user = User::find($id);
-        $user->save($validatedData);
-
-        // dd($user);
-
+        // $user = User::find($id);
+        // $user->save($validatedData);
+        User::where('id_user', $request->idUser)->update($validatedData);
 
         return redirect()->route('admin.kasir')->with('success', 'Success Deleting Menu');
 

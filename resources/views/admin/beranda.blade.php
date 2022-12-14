@@ -56,15 +56,15 @@
         <div class="flex items-center space-x-9">
             <div class="text-primary bg-secondary px-10 py-6 w-1/3 h-44 rounded-xl bg ">
                 <p class="mb-4">Jumlah User Kasir</p>
-                <h1 class="text-5xl font-bold">14</h1>
+                <h1 class="text-5xl font-bold">{{ $kasir }}</h1>
             </div>
             <div class="text-secondary bg-componen px-10 py-6 w-1/3 rounded-xl h-44">
                 <p class="mb-4">Jumlah User Manager</p>
-                <h1 class="text-5xl font-bold">14</h1>
+                <h1 class="text-5xl font-bold">{{ $manager }}</h1>
             </div>
             <div class="text-secondary bg-warna-3 px-10 py-6 w-1/3 h-44 rounded-xl">
                 <p class="mb-4">Jumlah Menu Cafe</p>
-                <h1 class="text-5xl font-bold">14</h1>
+                <h1 class="text-5xl font-bold">{{ $menu }}</h1>
             </div>
         </div>
     </div>

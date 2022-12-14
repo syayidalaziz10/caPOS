@@ -162,7 +162,7 @@
     <div class="relative w-full max-w-5xl h-full md:h-auto">
         <!-- Modal content -->
         <form action="{{ route('user.update', $user) }}" method="POST" enctype="multipart/form-data" class="relative rounded-xl shadow bg-warna-2">
-            @method('put')
+            @method('POST')
             @csrf
             <!-- Modal header -->
             <div class="p-6">

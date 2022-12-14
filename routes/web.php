@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [UserController::class, 'home'])->name('home');
+// Route::get('/', [UserController::class, 'home'])->name('home');
 Route::get('/admin', [UserController::class, 'adminBeranda'])->name('admin');
 Route::get('/admin/kasir', [UserController::class, 'adminKasir'])->name('admin.kasir');
 Route::get('/admin/manajer', [UserController::class, 'adminManajer'])->name('admin.manajer');
@@ -35,11 +35,12 @@ Route::get('/manajer', [UserController::class, 'manajer'])->name('user.manajer')
 Route::get('/user/createkasir', [UserController::class, 'createKasir'])->name('user.createKasir');
 Route::get('/user/createmanajer', [UserController::class, 'createManajer'])->name('user.createManajer');
 // Route::get('/user/edit', [UserController::class, 'edit'])->name('user.edit');
-Route::put('/user/update', [UserController::class, 'update'])->name('user.update');
+Route::post('/user/update', [UserController::class, 'update'])->name('user.update');
 // Route::get('/user/destroy', [UserController::class, 'destroy'])->name('user.destroy');
 // Route::post('/user/destroy', [UserController::class, 'destroy'])->name('user.destroy');
 Route::delete('/user/destroy', [UserController::class, 'destroy'])->name('user.destroy');
 Route::post('/register', [UserController::class, 'register_action'])->name('register.action');
+Route::get('/', [UserController::class, 'login'])->name('login');
 Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::post('/login', [UserController::class, 'login_action'])->name('login.action');
 Route::get('/password', [UserController::class, 'password'])->name('password');
