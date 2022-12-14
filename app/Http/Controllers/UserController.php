@@ -232,6 +232,7 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         // ddd($request);
+        // ddd($user);
         $validatedData = $request->validate([
             'nama' => 'required|max:50',
             'username' => 'required|max:16|min:8',
@@ -244,10 +245,10 @@ class UserController extends Controller
 
 
         if ($request->file('gambar')) {
-            if ($request->oldImage) {
-                Storage::delete($request->oldImage);
+            if ($request->profilSekarang != null) {
+                Storage::delete($request->profilSekarang);
             }
-            $validatedData['gambar'] = $request->file('gambar')->store('menu-images');
+            $validatedData['gambar'] = $request->file('gambar')->store('posts-images');
         }
 
         // $user = User::find($id);

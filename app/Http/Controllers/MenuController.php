@@ -90,10 +90,11 @@ class MenuController extends Controller
      */
     public function update(Request $request, Menu $menu)
     {
+        // ddd($request);
         $validatedData = $request->validate([
             'nama_menu' => 'required',
             'harga' => 'required',
-            'id_kategori' => 'required',
+            // 'id_kategori' => 'required',
             'gambar' => 'image|file|max:2000'
         ]);
         if ($request->file('gambar')) {
@@ -104,7 +105,7 @@ class MenuController extends Controller
         }
 
         Menu::where('id_menu', $menu->id_menu)->update($validatedData);
-        return redirect()->route('menu.index')->with('success', 'Success Editing Menu');
+        return redirect()->route('admin.menu')->with('success', 'Success Editing Menu');
     }
 
     /**

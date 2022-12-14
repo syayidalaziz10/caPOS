@@ -30,6 +30,8 @@
         let alamatObj   = document.getElementById('alamatEdit');
         let genderObj   = document.getElementById('genderEdit');
         let tanggalObj   = document.getElementById('ttlEdit');
+        let gambarSkgObj   = document.getElementById('gambarEditSkg');
+
     
         function editModal(obj)
         {
@@ -42,13 +44,17 @@
             const gender   = obj.getAttribute("data-jenisKelamin");
             const no       = obj.getAttribute("data-noHp");
             const gambar   = obj.getAttribute("data-gambar");
-            console.log(gambar);
+            const gambarS  = obj.getAttribute("data-gambarSkg");
+
+            console.log(gambarS);
             idUserObj.value   = idUser;
             usernameObj.value = username;
             namaLengkapObj.value = namaUser;
             tanggalObj.value = tanggal;
             alamatObj.value = alamat;
             hpObj.value = no;
+            gambarSkgObj.value = gambarS;
+
             profilObj.style.background      = `url('${gambar}') top center`;
             profilObj.style.backgroundSize  = 'cover';
             

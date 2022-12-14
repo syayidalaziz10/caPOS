@@ -154,19 +154,117 @@
 </div>
 {{-- end modal tambah user --}}
 
-{{-- modal edit user --}}
-<div id="staticModalEdit" data-modal-backdrop="static" tabindex="-1" aria-label="hidden" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 p-4 w-full md:inset-0 h-modal md:h-full">
+
+{{-- modal tambah user --}}
+<div id="staticModal" data-modal-backdrop="static" aria-label="hidden" tabindex="-1" class=" hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 p-4 w-full md:inset-0 h-modal md:h-full">
     <div class="relative w-full max-w-5xl h-full md:h-auto">
         <!-- Modal content -->
-        <form action="{{ route('user.update', $user) }}" method="POST" enctype="multipart/form-data" class="relative rounded-xl shadow bg-warna-2">
-            @method('put')
+        <form action="{{ route('register.action') }}" method="POST" enctype="multipart/form-data" class="relative rounded-xl shadow bg-warna-2">
+     
             @csrf
             <!-- Modal header -->
             <div class="p-6">
     
                 <div class="flex justify-between items-start p-4 rounded-xl">
                     <h3 class="text-xl font-bold text-secondary">
-                        EDIT USER MANAJER
+                        TAMBAH USER KASIR
+                    </h3>
+                    <button type="button" class="text-componen hover:bg-gray-200 hover:text-gray-900 rounded-lg bg-warna-4 text-sm p-1.5 ml-auto inline-flex items-center" data-modal-toggle="staticModal">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>  
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <div class="flex items-start p-6 space-x-12">
+                    {{-- form modal --}}
+                    <div class="space-y-3 w-1/2">
+                        <div>
+                            <h2 class="text-xs font-bold text-secondary">AKUN USER KASIR</h2>
+                        </div>
+                        <div>
+                            <label for="username" class="block text-secondary text-sm mb-2">Username</label>
+                            <input type="text" id="username" name="username" class="w-full bg-primary py-2 px-6 rounded-xl text-secondary">
+                        </div>
+                        <div class="flex justify-center items-center space-x-2">
+                            <div class="w-1/2">
+                                <label for="password" class=" text-secondary text-sm">Password</label>
+                                <input type="password" id="password" name="password" class=" block w-full mt-2 bg-primary py-2 px-6 rounded-xl text-secondary">
+                            </div>
+                            <div class="w-1/2">
+                                <label for="konfrimasi" class= "text-secondary text-sm">Konfirmasi Password</label>
+                                <input type="password" name="password_confirmation" id="konfrimasi" class="block w-full bg-primary mt-2 py-2 px-6 rounded-xl text-secondary">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="text-secondary text-sm">Gambar</label>
+                            <label for="profil" class="block text-secondary mt-2">
+                                <div class="bg-primary rounded-xl h-48 w-full flex justify-center items-center py-7 relative cursor-pointer">
+                                    <svg width="78" height="78" viewBox="0 0 78 78" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M76.8492 58.344L64.6394 29.835C60.5045 20.163 52.8978 19.773 47.7876 28.977L40.4149 42.276C36.6701 49.023 29.6875 49.608 24.8504 43.563L23.9922 42.471C18.96 36.153 11.8604 36.933 8.23257 44.148L1.52304 57.603C-3.19704 66.963 3.62952 78 14.0839 78H63.8593C74.0016 78 80.8281 67.665 76.8492 58.344ZM19.4671 23.4C22.5709 23.4 25.5475 22.1673 27.7422 19.9732C29.9369 17.779 31.1698 14.803 31.1698 11.7C31.1698 8.59697 29.9369 5.62103 27.7422 3.42685C25.5475 1.23268 22.5709 0 19.4671 0C16.3634 0 13.3868 1.23268 11.1921 3.42685C8.99742 5.62103 7.76446 8.59697 7.76446 11.7C7.76446 14.803 8.99742 17.779 11.1921 19.9732C13.3868 22.1673 16.3634 23.4 19.4671 23.4Z" fill="#BDCCD4" fill-opacity="0.5"/>
+                                    </svg>
+                                    <span id="fileName"></span>
+                                    <input type="file" name="gambar" id="profil" class="invisible absolute top-0">
+                                </div>
+                            </label>
+                        </div>
+                        <input type="hidden" name="level" value="kasir">
+
+                    </div>
+                    <div class="w-1/2 space-y-3">
+                        <div>
+                            <h2 class="text-xs font-bold text-secondary">BIODATA USER KASIR</h2>
+                        </div>
+                        <div>
+                            <label for="namalengkap" class="block text-secondary text-sm mb-2">Nama Lengkap</label>
+                            <input type="text" id="namalengkap" name="nama" class="w-full bg-primary py-2 px-6 rounded-xl text-secondary">
+                        </div>
+                        <div>
+                            <label for="hp" class="block text-secondary text-sm mb-2">No Handphone</label>
+                            <input type="text" id="hp" name="no_hp" class="w-full bg-primary py-2 px-6 rounded-xl text-secondary">
+                        </div>
+                        <div>
+                            <label for="ttl" class="block text-secondary text-sm mb-2">Tanggal Lahir</label>
+                            <input type="date" id="ttl" name="tanggal_lahir" class="w-full bg-primary py-2 px-6 rounded-xl text-secondary">
+                        </div>
+                        <div>
+                            <label for="alamat" class="block text-secondary text-sm mb-2">Alamat</label>
+                            <input type="text" id="alamat" name="alamat" class="w-full bg-primary py-2 px-6 rounded-xl text-secondary">
+                        </div>
+                        <div>
+                            <label for="gender" class="block text-secondary text-sm mb-2">Jenis Kelamin</label>
+                            <select name="jenis_kelamin" id="gender" class="w-full bg-primary text-secondary py-2 px-6 rounded-xl">
+                                <option value="pria">Pria</option>
+                                <option value="wanita">Wanita</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                
+                <!-- Modal footer -->
+                <div class="flex items-center justify-end w-full px-12 py-6 space-x-2 rounded-xl bg-warna-4">
+                    <button data-modal-toggle="staticModal" type="button" class="text-primary bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">Batal</button>
+                    <button data-modal-toggle="staticModal" type="submit" class="text-white bg-componen hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Tambah User</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{{-- end modal tambah user --}}
+
+{{-- modal edit user --}}
+<div id="staticModalEdit" data-modal-backdrop="static" tabindex="-1" aria-label="hidden" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 p-4 w-full md:inset-0 h-modal md:h-full">
+    <div class="relative w-full max-w-5xl h-full md:h-auto">
+        <!-- Modal content -->
+        <form action="{{ route('user.update', $user) }}" method="POST" enctype="multipart/form-data" class="relative rounded-xl shadow bg-warna-2">
+            @method('POST')
+            @csrf
+            <!-- Modal header -->
+            <div class="p-6">
+    
+                <div class="flex justify-between items-start p-4 rounded-xl">
+                    <h3 class="text-xl font-bold text-secondary">
+                        EDIT USER MANAGER
                     </h3>
                     <button type="button" class="text-componen hover:bg-gray-200 hover:text-gray-900 rounded-lg bg-warna-4 text-sm p-1.5 ml-auto inline-flex items-center" data-modal-toggle="staticModalEdit">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>  
@@ -177,7 +275,7 @@
                     {{-- form modal --}}
                     <div class="w-1/2 space-y-3">
                         <div>
-                            <h2 class="text-xs font-bold text-secondary">AKUN USER MANAJER</h2>
+                            <h2 class="text-xs font-bold text-secondary">AKUN USER MANAGER</h2>
                         </div>
                         <div>
                             <input type="hidden" name="idUser" id="idUserEdit">
@@ -189,23 +287,25 @@
                                 <label class="text-secondary text-sm">Gambar Sekarang</label>
                                 <label class="block text-secondary mt-2">
                                     <div id="profilEdit" style="background-image: url('/img/profil.jpg'); " class="bg-primary rounded-xl w-full h-48 flex justify-center items-center relative bg-cover bg-center" ></div>
+                                    <input type="hidden" name="profilSekarang" id="gambarEditSkg">
                                 </label>
                             </div>
                             <div class="w-full">
                                 <label class="text-secondary text-sm">Gambar</label>
-                                <label for="profil" class="block text-secondary mt-2">
+                                <label for="profilEdits" class="block text-secondary mt-2">
                                     <div class="bg-primary rounded-xl w-full h-48 flex justify-center items-center py-7 relative cursor-pointer">
                                         <svg width="78" height="78" viewBox="0 0 78 78" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M76.8492 58.344L64.6394 29.835C60.5045 20.163 52.8978 19.773 47.7876 28.977L40.4149 42.276C36.6701 49.023 29.6875 49.608 24.8504 43.563L23.9922 42.471C18.96 36.153 11.8604 36.933 8.23257 44.148L1.52304 57.603C-3.19704 66.963 3.62952 78 14.0839 78H63.8593C74.0016 78 80.8281 67.665 76.8492 58.344ZM19.4671 23.4C22.5709 23.4 25.5475 22.1673 27.7422 19.9732C29.9369 17.779 31.1698 14.803 31.1698 11.7C31.1698 8.59697 29.9369 5.62103 27.7422 3.42685C25.5475 1.23268 22.5709 0 19.4671 0C16.3634 0 13.3868 1.23268 11.1921 3.42685C8.99742 5.62103 7.76446 8.59697 7.76446 11.7C7.76446 14.803 8.99742 17.779 11.1921 19.9732C13.3868 22.1673 16.3634 23.4 19.4671 23.4Z" fill="#BDCCD4" fill-opacity="0.5"/>
                                         </svg>
                                     </div>
                                 </label>
+                                <input type="file" name="gambar" id="profilEdits" class="invisible absolute top-0">
                             </div>
                         </div>
                     </div>
                     <div class="w-1/2 space-y-3">
                         <div>
-                            <h2 class="text-xs font-bold text-secondary">BIODATA USER MANAJER</h2>
+                            <h2 class="text-xs font-bold text-secondary">BIODATA USER MANAGER</h2>
                         </div>
                         <div>
                             <label for="namalengkapEdit" class="block text-secondary text-sm mb-2">Nama Lengkap</label>
@@ -235,7 +335,7 @@
             </div>
             <!-- modal footer -->
             <div class="flex items-center justify-end w-full px-12 py-6 space-x-2 rounded-xl bg-warna-4">
-                <button data-modal-toggle="staticModalEdit"  class="text-primary bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">Batal</button>
+                <button data-modal-toggle="staticModalEdit" type="button" class="text-primary bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">Batal</button>
                 <button data-modal-toggle="staticModalEdit" type="submit" class="text-white bg-componen hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Edit User</button>
             </div>
             {{-- end modal footer --}}
