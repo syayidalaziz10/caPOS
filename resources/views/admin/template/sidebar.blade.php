@@ -27,7 +27,7 @@
     <div class="pb-10">
         <a href="{{ url('/admin/') }}" class="flex flex-col items-center">
             <svg width="40" height="36" viewBox="0 0 53 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M26.5 38.7501V31.6251M21.5946 2.69763L3.98082 15.8789C1.99832 17.3514 0.727482 20.4626 1.15957 22.7901L4.53998 41.6951C5.14998 45.0676 8.60665 47.7989 12.2666 47.7989H40.7333C44.3679 47.7989 47.85 45.0439 48.46 41.6951L51.8404 22.7901C52.2471 20.4626 50.9762 17.3514 49.0192 15.8789L31.4054 2.72138C28.6858 0.67888 24.2887 0.67888 21.5946 2.69763V2.69763Z" stroke="#354374" stroke-opacity="0.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M26.5 38.7501V31.6251M21.5946 2.69763L3.98082 15.8789C1.99832 17.3514 0.727482 20.4626 1.15957 22.7901L4.53998 41.6951C5.14998 45.0676 8.60665 47.7989 12.2666 47.7989H40.7333C44.3679 47.7989 47.85 45.0439 48.46 41.6951L51.8404 22.7901C52.2471 20.4626 50.9762 17.3514 49.0192 15.8789L31.4054 2.72138C28.6858 0.67888 24.2887 0.67888 21.5946 2.69763V2.69763Z" @if($page == "beranda") fill="#354374" @else stroke="#354374" @endif stroke-opacity="0.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
             <p class="text-sm @if($page == "beranda") font-bold @endif text-primary m-1">BERANDA</p>
         </a>
@@ -60,11 +60,11 @@
     </div>
 </div>
 <div>
-    <button type="submit">
+    <a href="{{ route('logout') }}">
         <svg width="41" height="41" viewBox="0 0 61 62" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M20.8125 16.625C21.7812 5.375 27.5625 0.78125 40.2187 0.78125H40.625C54.5937 0.78125 60.1875 6.375 60.1875 20.3438V40.7188C60.1875 54.6875 54.5937 60.2813 40.625 60.2813H40.2187C27.6562 60.2813 21.875 55.75 20.8437 44.6875M39.875 30.5H4.3125M11.2812 20.0313L0.8125 30.5L11.2812 40.9688" stroke="#354374" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-    </button>
+    </a>
 </div>
 
 {{-- end sidebar --}}

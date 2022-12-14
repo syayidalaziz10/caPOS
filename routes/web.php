@@ -17,22 +17,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [UserController::class, 'home'])->name('home');
-Route::get('/admin', [UserController::class, 'adminKasir'])->name('admin');
+Route::get('/admin', [UserController::class, 'adminBeranda'])->name('admin');
 Route::get('/admin/kasir', [UserController::class, 'adminKasir'])->name('admin.kasir');
 Route::get('/admin/manajer', [UserController::class, 'adminManajer'])->name('admin.manajer');
 Route::get('/admin/menu', [UserController::class, 'adminMenu'])->name('admin.menu');
-
-
-Route::get('/kasir', function () {
-    $data = ['title' => 'kasir'];
-    return view('kasir/pesanan', $data);
-})->name('kasir');
+// Route::get('/kasir', function () {
+//     $data = ['title' => 'kasir'];
+//     return view('kasir/pesanan', $data );
+// })->name('kasir');
 // Route::get('/user/edit', function () {
 //     return view('user/edit', ['title' => 'kasir',$user]);
 // })->name('user.edit');
 
 Route::get('/register', [UserController::class, 'register'])->name('register');
-Route::get('/kasir', [PemesananController::class, 'pemesanan'])->name('kasir.pemesanan');
+Route::get('/kasir', [UserController::class, 'kasir'])->name('kasir.pemesanan');
 Route::get('/manajer', [UserController::class, 'manajer'])->name('user.manajer');
 Route::get('/user/createkasir', [UserController::class, 'createKasir'])->name('user.createKasir');
 Route::get('/user/createmanajer', [UserController::class, 'createManajer'])->name('user.createManajer');

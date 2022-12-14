@@ -43,34 +43,26 @@ class PemesananController extends Controller
      */
     public function store(Request $request)
     {
-        ddd($request);
+        $row = explode(',',$request->nama_menu);
+        $raw = explode(',',$request->jumlah);
         $pemesanan = new Pemesanan([
             'id_user' => Auth::user()->id_user,
             'tanggal_pemesanan' => Carbon::today()->toDateString(),
-            'total_biaya' => $request->jumlah*$request->harga
+            'total_biaya' => 0
         ]);
         $pemesanan->save();
         // $validatedData->id_pemesanan;
         // $pemesanan = Pemesanan::create($validatedData);
         $pemesanan->id_pemesanan;
-        $detailPemesanan = new DetailPemesanan([
-            'id_pemesanan' => $pemesanan->id_pemesanan,
-            'id_menu' => $request->id_menu,
-            'jumlah' => $request->jumlah
-        ]);
-        $detailPemesanan->save();
-        $menu = Menu::where('id_menu', $request->id_menu);
-        return redirect()->route('pemesanan.index')->with('success', 'Success Creating pemesanan');
-    }
-
-    public function pemesanan(){
-        $data = [
-            'title' => "Data Kasir",
-            'page'  => "kasir",
-        ];
-       
-        // $data['users'] = User::where('level', '=', 'kasir')->get();
-        return view('kasir/pesanan', $data);
+        for ($i=0; $i < count($row); $i++) { 
+            $detailPemesanan = new DetailPemesanan([
+                'id_pemesanan' => $pemesanan->id_pemesanan,
+                'id_menu' => "".$row[$i],
+                'jumlah' => $raw[$i],
+            ]);
+            $detailPemesanan->save();
+        }
+        return redirect()->route('kasir.pemesanan')->with('success', 'Success Creating pemesanan');
     }
 
     /**

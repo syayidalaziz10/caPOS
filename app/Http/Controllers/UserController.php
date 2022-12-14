@@ -67,6 +67,24 @@ class UserController extends Controller
                     ->orWhere('no_hp', 'like', '%' . $data['q'] . '%');
             })->get();
         return view('', $data);
+        $data['menu']  = Menu::where('nama_menu', 'like', '%' . $data['q'] . '%')->join('kategori', 'menu.id_kategori', '=', 'kategori.id_kategori')->get();
+        $data['users'] = User::where('level', '=', 'kasir')
+            ->where(function ($query) use ($data) {
+                $query->where('nama', 'like', '%' . $data['q'] . '%')
+                    ->orWhere('username', 'like', '%' . $data['q'] . '%')
+                    ->orWhere('no_hp', 'like', '%' . $data['q'] . '%');
+            })->get();
+        return view('kasir/pesanan', $data);
+    }
+    public function adminBeranda(Request $request)
+    {
+        $data = [
+            'title' => "Beranda",
+            'page'  => "beranda",
+            'q'     => $request->get('q')
+        ];
+
+        return view('/admin/beranda', $data);
     }
 
 
@@ -143,7 +161,7 @@ class UserController extends Controller
         User::create($validatedData);
         // $validatedData->save();
         if ($request->level == 'kasir') {
-            return redirect()->route('admin')->with('success', 'Registration Success Please Login');
+            return redirect()->route('admin.kasir')->with('success', 'Registration Success Please Login');
         } else if ($request->level == 'manajer') {
             return redirect()->route('admin.manajer')->with('success', 'Registration Success Please Login');
         }
@@ -204,7 +222,7 @@ class UserController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/');
+        return redirect('/login');
     }
 
     // public function edit(User $user)
