@@ -348,6 +348,8 @@
             const hg = d.getAttribute("data-hg");
 
             let ssd = document.getElementById(nama+"-inp");
+            let a1  = lstidm.indexOf(nama);
+            lstVal[a1]-=1;
             if(Number(ssd.value) > 1)
             {
                 ssd.value = Number(ssd.value)-1;

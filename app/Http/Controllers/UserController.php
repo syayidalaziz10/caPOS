@@ -275,10 +275,10 @@ class UserController extends Controller
         }
         User::destroy($_GET["user"]);
         if ($user->level == 'kasir') {
-            return redirect()->route('user.kasir')->with('success', 'Registration Success Please Login');
+            return redirect()->route('admin.kasir')->with('success', 'Registration Success Please Login');
         } else if ($user->level == 'manajer') {
-            return redirect()->route('user.manajer')->with('success', 'Registration Success Please Login');
+            return redirect()->route('admin.manajer')->with('success', 'Registration Success Please Login');
         }
-        return redirect()->route('home')->with('success', 'Registration Success Please Login');
+        return redirect()->route('admin')->with('success', 'Registration Success Please Login');
     }
 }

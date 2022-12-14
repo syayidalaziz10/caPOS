@@ -10,9 +10,9 @@
             @endforeach
         @endif
 <div class="flex w-full justify-center">
-    <input type="text" placeholder="Cari User Kasir" class="text-white w-full rounded-2xl my-12 py-3 px-16 bg-warna-2 text-secondary text-md">
+    {{-- <input type="text" placeholder="Cari User Kasir" class="text-white w-full rounded-2xl my-12 py-3 px-16 bg-warna-2 text-secondary text-md"> --}}
 </div>
-<div class="flex justify-between w-full items-center">
+<div class="flex mt-5 justify-between w-full items-center">
     <h1 class="text-secondary text-2xl font-bold">Manajemen Kasir</h1>
     <button type="button" data-modal-toggle="staticModal" class="py-2 px-8 bg-componen rounded-lg font-semibold text-sm">Tambah User</button>
 </div>
