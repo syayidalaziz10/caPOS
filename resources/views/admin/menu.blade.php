@@ -67,44 +67,48 @@
                 </div>
                 <!-- Modal body -->
                 <div class="p-6 space-y-4">
-                    {{-- form modal --}}
-                    <div>
-                        <label for="namamenu" class="block text-secondary text-sm mb-2">Nama Menu</label>
-                        <input type="text" id="namamenu" class="w-full bg-primary py-2 px-6 rounded-xl text-secondary">
-                        
-                    </div>
-                    <div>
-                        <label for="harga" class="block text-secondary text-sm mb-2">Harga</label>
-                        <input type="text" id="harga" class="w-full bg-primary py-2 px-6 rounded-xl text-secondary">
-                    </div>
-                    <div>
-                        <label for="kategori" class="block text-secondary text-sm mb-2">Kategori</label>
-                        {{-- <input type="text" id="kategori" class="w-full bg-primary py-2 px-6 rounded-xl text-secondary"> --}}
-                        <select name="" id="kategori" class="w-full bg-primary py-2 px-6 rounded-xl text-secondary">
-                            <option value="makanan">Makanan</option>
-                            <option value="minuman">Minuman</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="text-secondary text-sm">Gambar</label>
-                        <label for="profil" class="block text-secondary mt-2">
-                            <div class="bg-primary rounded-xl w-full flex justify-center items-center py-7 relative cursor-pointer">
-                                <svg width="78" height="78" viewBox="0 0 78 78" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M76.8492 58.344L64.6394 29.835C60.5045 20.163 52.8978 19.773 47.7876 28.977L40.4149 42.276C36.6701 49.023 29.6875 49.608 24.8504 43.563L23.9922 42.471C18.96 36.153 11.8604 36.933 8.23257 44.148L1.52304 57.603C-3.19704 66.963 3.62952 78 14.0839 78H63.8593C74.0016 78 80.8281 67.665 76.8492 58.344ZM19.4671 23.4C22.5709 23.4 25.5475 22.1673 27.7422 19.9732C29.9369 17.779 31.1698 14.803 31.1698 11.7C31.1698 8.59697 29.9369 5.62103 27.7422 3.42685C25.5475 1.23268 22.5709 0 19.4671 0C16.3634 0 13.3868 1.23268 11.1921 3.42685C8.99742 5.62103 7.76446 8.59697 7.76446 11.7C7.76446 14.803 8.99742 17.779 11.1921 19.9732C13.3868 22.1673 16.3634 23.4 19.4671 23.4Z" fill="#BDCCD4" fill-opacity="0.5"/>
-                                </svg>
-                                <input type="file" id="profil" class="invisible absolute top-0">
-                            </div>
-                        </label>
-                    </div>
+                    <form action="{{ route('menu.store') }}" method="POST" enctype="multipart/form-data">
+                        {{-- form modal --}}
+                        @csrf
+                        <div>
+                            <label for="namamenu" class="block text-secondary text-sm mb-2">Nama Menu</label>
+                            <input name="nama_menu" type="text" id="namamenu" class="w-full bg-primary py-2 px-6 rounded-xl text-secondary">
+                            
+                        </div>
+                        <div>
+                            <label for="harga" class="block text-secondary text-sm mb-2">Harga</label>
+                            <input name="harga" type="text" id="harga" class="w-full bg-primary py-2 px-6 rounded-xl text-secondary">
+                        </div>
+                        <div>
+                            <label for="kategori" class="block text-secondary text-sm mb-2">Kategori</label>
+                            {{-- <input type="text" id="kategori" class="w-full bg-primary py-2 px-6 rounded-xl text-secondary"> --}}
+                            <select name="id_kategori" id="kategori" class="w-full bg-primary py-2 px-6 rounded-xl text-secondary">
+                                <option value="1">Makanan</option>
+                                <option value="2">Minuman</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-secondary text-sm">Gambar</label>
+                            <label for="profil" class="block text-secondary mt-2">
+                                <div class="bg-primary rounded-xl w-full flex justify-center items-center py-7 relative cursor-pointer">
+                                    <svg width="78" height="78" viewBox="0 0 78 78" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M76.8492 58.344L64.6394 29.835C60.5045 20.163 52.8978 19.773 47.7876 28.977L40.4149 42.276C36.6701 49.023 29.6875 49.608 24.8504 43.563L23.9922 42.471C18.96 36.153 11.8604 36.933 8.23257 44.148L1.52304 57.603C-3.19704 66.963 3.62952 78 14.0839 78H63.8593C74.0016 78 80.8281 67.665 76.8492 58.344ZM19.4671 23.4C22.5709 23.4 25.5475 22.1673 27.7422 19.9732C29.9369 17.779 31.1698 14.803 31.1698 11.7C31.1698 8.59697 29.9369 5.62103 27.7422 3.42685C25.5475 1.23268 22.5709 0 19.4671 0C16.3634 0 13.3868 1.23268 11.1921 3.42685C8.99742 5.62103 7.76446 8.59697 7.76446 11.7C7.76446 14.803 8.99742 17.779 11.1921 19.9732C13.3868 22.1673 16.3634 23.4 19.4671 23.4Z" fill="#BDCCD4" fill-opacity="0.5"/>
+                                    </svg>
+                                    <input name="gambar" type="file" id="profil" class="invisible absolute top-0">
+                                </div>
+                            </label>
+                        </div>
+
                 </div>
             </div>
             <div>
                 
-                <!-- Modal footer -->
-                    <div class="flex items-center justify-end w-full px-12 py-6 space-x-2 rounded-xl bg-warna-4">
-                        <button data-modal-toggle="staticModal" type="button" class="text-primary bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">Batal</button>
-                        <button data-modal-toggle="staticModal" type="button" class="text-white bg-componen hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Tambah User</button>
-                    </div>
+                    <!-- Modal footer -->
+                        <div class="flex items-center justify-end w-full px-12 py-6 space-x-2 rounded-xl bg-warna-4">
+                            <button data-modal-toggle="staticModal" type="button" class="text-primary bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">Batal</button>
+                            <button data-modal-toggle="staticModal" type="submit" class="text-white bg-componen hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Tambah Menu</button>
+                        </div>
+                    </form>
             </div>
         </div>
     </div>
@@ -173,7 +177,7 @@
             <!-- modal footer -->
             <div class="flex items-center justify-end w-full px-12 py-6 space-x-2 rounded-xl bg-warna-4">
                 <button data-modal-toggle="staticModalEdit" type="button" class="text-primary bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">Batal</button>
-                <button data-modal-toggle="staticModalEdit" type="button" class="text-white bg-componen hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Tambah User</button>
+                <button data-modal-toggle="staticModalEdit" type="submit" class="text-white bg-componen hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Tambah User</button>
             </div>
             {{-- end modal footer --}}
         </div>

@@ -7,21 +7,20 @@ use App\Models\User;
 use App\Models\Menu;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
     //
-    public function home(){
-        if(Auth::check()){
+    public function home()
+    {
+        if (Auth::check()) {
             $user = Auth::user();
             if ($user->level == 'admin') {
                 return redirect()->intended('admin');
-            }
-            else if ($user->level == 'kasir') {
+            } else if ($user->level == 'kasir') {
                 return redirect()->intended('kasir');
-            }
-            else if ($user->level == 'manajer') {
+            } else if ($user->level == 'manajer') {
                 return redirect()->intended('manajer');
             }
             return redirect()->intended('/');
@@ -30,71 +29,99 @@ class UserController extends Controller
         $data['title'] = 'Home';
         return view('home', $data);
     }
-    public function register(){
+
+
+    public function register()
+    {
         $data['title'] = 'Register';
         return view('user/register', $data);
     }
-    public function createKasir(){
+
+
+    public function createKasir()
+    {
         $data['title'] = 'Register';
         return view('user/createkasir', $data);
     }
-    public function createManajer(){
+
+
+    public function createManajer()
+    {
         $data['title'] = 'Register';
         return view('user/createmanajer', $data);
     }
-    public function kasir(Request $request){
+
+
+    public function kasir(Request $request)
+    {
         $data = [
             'title' => "Data Kasir",
             'page'  => "kasir",
             'q'     => $request->get('q')
         ];
-       
+
         $data['users'] = User::where('level', '=', 'kasir')
-        ->where(function($query) use($data){
-            $query->where('nama', 'like', '%' .$data['q']. '%')
-            ->orWhere('username', 'like', '%' .$data['q']. '%')
-            ->orWhere('no_hp', 'like', '%' .$data['q']. '%');})->get();
+            ->where(function ($query) use ($data) {
+                $query->where('nama', 'like', '%' . $data['q'] . '%')
+                    ->orWhere('username', 'like', '%' . $data['q'] . '%')
+                    ->orWhere('no_hp', 'like', '%' . $data['q'] . '%');
+            })->get();
         return view('', $data);
     }
-    public function adminKasir(Request $request){
+
+
+    public function adminKasir(Request $request)
+    {
         $data = [
             'title' => "Data Kasir",
             'page'  => "kasir",
             'q'     => $request->get('q')
         ];
-       
+
         $data['users'] = User::where('level', '=', 'kasir')->get();
         return view('admin/kasir', $data);
     }
-    public function adminManajer(Request $request){
+
+
+    public function adminManajer(Request $request)
+    {
         $data = [
             'title' => "Data Manajer",
             'page'  => "manajer",
             'q'     => $request->get('q')
         ];
-       
+
         $data['users'] = User::where('level', '=', 'manajer')->get();
         return view('admin/manager', $data);
     }
-    public function manajer(Request $request){
+
+
+    public function manajer(Request $request)
+    {
         $data['title'] = 'Data Manajer';
         $data['q'] = $request->get('q');
         $data['users'] = User::where('level', '=', 'manajer')
-        ->where(function($query) use($data){$query->where('nama', 'like', '%' .$data['q']. '%')->orWhere('username', 'like', '%' .$data['q']. '%')->orWhere('no_hp', 'like', '%' .$data['q']. '%');})->get();
+            ->where(function ($query) use ($data) {
+                $query->where('nama', 'like', '%' . $data['q'] . '%')->orWhere('username', 'like', '%' . $data['q'] . '%')->orWhere('no_hp', 'like', '%' . $data['q'] . '%');
+            })->get();
         return view('user/manajer', $data);
     }
-    
-    public function adminMenu(Request $request){
+
+    public function adminMenu(Request $request)
+    {
         $data = [
             'title' => "Data Menu",
             'page'  => "menu",
             'q'     => $request->get('q')
         ];
-       
+
         $data['menu'] = Menu::get();
         return view('admin/menu', $data);
     }
-    public function register_action(request $request){
+
+
+    public function register_action(request $request)
+    {
         $validatedData = $request->validate([
             'nama' => 'required|max:50',
             'username' => 'required|unique:user|max:16|min:8',
@@ -108,57 +135,57 @@ class UserController extends Controller
             'gambar' => 'required'
         ]);
         $validatedData['password'] = Hash::make($validatedData['password']);
-        if($request->file('gambar')){
+        if ($request->file('gambar')) {
             $validatedData['gambar'] = $request->file('gambar')->store('post-images');
         }
-        
+
         // $user->save();
         User::create($validatedData);
         // $validatedData->save();
         if ($request->level == 'kasir') {
             return redirect()->route('admin')->with('success', 'Registration Success Please Login');
-        } else if($request->level == 'manajer'){
+        } else if ($request->level == 'manajer') {
             return redirect()->route('admin.manajer')->with('success', 'Registration Success Please Login');
         }
         return redirect()->route('home')->with('success', 'Registration Success Please Login');
-
     }
 
-    public function login(){
+    public function login()
+    {
         $data['title'] = 'Login';
         return view('login', $data);
     }
 
-    public function login_action(request $request){
+    public function login_action(request $request)
+    {
 
         $validatedData = $request->validate([
             'username' => 'required',
             'password' => 'required',
         ]);
         $credential = $request->only('username', 'password');
-        if(Auth::attempt($credential)){
+        if (Auth::attempt($credential)) {
             $user = Auth::user();
             if ($user->level == 'admin') {
                 return redirect()->intended('admin');
-            }
-            else if ($user->level == 'kasir') {
+            } else if ($user->level == 'kasir') {
                 return redirect()->intended('kasir');
-            }
-            else if ($user->level == 'manajer') {
+            } else if ($user->level == 'manajer') {
                 return redirect()->intended('manajer');
             }
             return redirect()->intended('/');
         }
         return back()->withErrors('password', 'Wrong username or passord !!!');
-        
     }
 
-    public function password(){
+    public function password()
+    {
         $data['title'] = 'Change Password';
         return view('user/password', $data);
     }
 
-    public function password_action(request $request){
+    public function password_action(request $request)
+    {
 
         $validatedData = $request->validate([
             'old_password' => 'required|current_password',
@@ -172,51 +199,56 @@ class UserController extends Controller
         return back()->with('success', 'Password changed');
     }
 
-    public function logout(request $request){
+    public function logout(request $request)
+    {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/');
     }
 
-    public function edit(User $user)
-    {
-        $data['title'] = 'User';
-        $data['user'] = $user;
-        return view('user.edit', $data);
-    }
+    // public function edit(User $user)
+    // {
+    //     $data['title'] = 'User';
+    //     $data['user'] = $user;
+    //     return view('user.edit', $data);
+    // }
 
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
             'nama' => 'required|max:50',
-            'username' => 'required|unique:user|max:16|min:8',
-            'password' => 'required|min:8',
-            'password_confirmation' => 'required|same:password',
-            'level' => 'required',
+            'username' => 'required|max:16|min:8',
             'tanggal_lahir' => 'required',
             'alamat' => 'required',
             'jenis_kelamin' => 'required',
             'no_hp' => 'required|numeric',
-            'gambar' => 'required|mimes:jpg,jpeg,png|file|max:2000'
+            'gambar' => 'image|file|max:2000'
         ]);
-        if($request->file('gambar')){
-            if($request->oldImage){
+
+
+        if ($request->file('gambar')) {
+            if ($request->oldImage) {
                 Storage::delete($request->oldImage);
             }
             $validatedData['gambar'] = $request->file('gambar')->store('menu-images');
         }
 
-        User::where('id_user', $user->update($validatedData));
-        if ($user->level == 'admin') {
-            return redirect()->route('user.admin')->with('success', 'Success Deleting Menu');
-        }
-        else if ($user->level == 'kasir') {
-            return redirect()->route('user.kasir')->with('success', 'Success Deleting Menu');
-        }
-        else if ($user->level == 'manajer') {
-            return redirect()->route('user.manajer')->with('success', 'Success Deleting Menu');
-        }
+        $user = User::findOrFail($id);
+        $user->save($validatedData);
+
+        // dd($user);
+
+
+        return redirect()->route('admin.kasir')->with('success', 'Success Deleting Menu');
+
+        // if ($user->level == 'admin') {
+        //     return redirect()->route('user.admin')->with('success', 'Success Deleting Menu');
+        // } else if ($user->level == 'kasir') {
+        //     return redirect()->route('user.kasir')->with('success', 'Success Deleting Menu');
+        // } else if ($user->level == 'manajer') {
+        //     return redirect()->route('user.manajer')->with('success', 'Success Deleting Menu');
+        // }
     }
 
     public function destroy(User $user)
@@ -229,10 +261,9 @@ class UserController extends Controller
         User::destroy($_GET["user"]);
         if ($user->level == 'kasir') {
             return redirect()->route('user.kasir')->with('success', 'Registration Success Please Login');
-        } else if($user->level == 'manajer'){
+        } else if ($user->level == 'manajer') {
             return redirect()->route('user.manajer')->with('success', 'Registration Success Please Login');
         }
         return redirect()->route('home')->with('success', 'Registration Success Please Login');
     }
 }
-

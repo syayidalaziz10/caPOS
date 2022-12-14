@@ -65,6 +65,7 @@
     <div class="relative w-full max-w-5xl h-full md:h-auto">
         <!-- Modal content -->
         <form action="{{ route('register.action') }}" method="POST" enctype="multipart/form-data" class="relative rounded-xl shadow bg-warna-2">
+            {{ method_field('PUT') }}
             @csrf
             <!-- Modal header -->
             <div class="p-6">
@@ -160,9 +161,9 @@
 <div id="staticModalEdit" data-modal-backdrop="static" tabindex="-1" aria-label="hidden" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 p-4 w-full md:inset-0 h-modal md:h-full">
     <div class="relative w-full max-w-5xl h-full md:h-auto">
         <!-- Modal content -->
-        <form action="{{ route('user.edit', $user) }}" method="POST" enctype="multipart/form-data" class="relative rounded-xl shadow bg-warna-2">
+        <form action="{{ route('user.update', $user) }}" method="POST" enctype="multipart/form-data" class="relative rounded-xl shadow bg-warna-2">
+            @method('put')
             @csrf
-            @method('PUT')    
             <!-- Modal header -->
             <div class="p-6">
     
@@ -215,7 +216,7 @@
                         </div>
                         <div>
                             <label for="hpEdit" class="block text-secondary text-sm mb-2">No Handphone</label>
-                            <input type="text" id="hpEdit" class="w-full bg-primary py-2 px-6 rounded-xl text-secondary">
+                            <input type="text" id="hpEdit" name="no_hp" class="w-full bg-primary py-2 px-6 rounded-xl text-secondary">
                         </div>
                         <div>
                             <label for="ttlEdit" class="block text-secondary text-sm mb-2">Tanggal Lahir</label>
@@ -237,8 +238,8 @@
             </div>
             <!-- modal footer -->
             <div class="flex items-center justify-end w-full px-12 py-6 space-x-2 rounded-xl bg-warna-4">
-                <button data-modal-toggle="staticModalEdit" type="button" class="text-primary bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">Batal</button>
-                <button data-modal-toggle="staticModalEdit" type="button" class="text-white bg-componen hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Tambah User</button>
+                <button data-modal-toggle="staticModalEdit"  class="text-primary bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">Batal</button>
+                <button data-modal-toggle="staticModalEdit" type="submit" class="text-white bg-componen hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Edit User</button>
             </div>
             {{-- end modal footer --}}
         </form>

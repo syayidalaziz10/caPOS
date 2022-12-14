@@ -21,9 +21,11 @@ Route::get('/admin', [UserController::class, 'adminKasir'])->name('admin');
 Route::get('/admin/kasir', [UserController::class, 'adminKasir'])->name('admin.kasir');
 Route::get('/admin/manajer', [UserController::class, 'adminManajer'])->name('admin.manajer');
 Route::get('/admin/menu', [UserController::class, 'adminMenu'])->name('admin.menu');
+
+
 Route::get('/kasir', function () {
     $data = ['title' => 'kasir'];
-    return view('kasir/pesanan', $data );
+    return view('kasir/pesanan', $data);
 })->name('kasir');
 // Route::get('/user/edit', function () {
 //     return view('user/edit', ['title' => 'kasir',$user]);
@@ -34,12 +36,12 @@ Route::get('/kasir', [PemesananController::class, 'pemesanan'])->name('kasir.pem
 Route::get('/manajer', [UserController::class, 'manajer'])->name('user.manajer');
 Route::get('/user/createkasir', [UserController::class, 'createKasir'])->name('user.createKasir');
 Route::get('/user/createmanajer', [UserController::class, 'createManajer'])->name('user.createManajer');
-Route::get('/user/edit', [UserController::class, 'edit'])->name('user.edit');
+// Route::get('/user/edit', [UserController::class, 'edit'])->name('user.edit');
+Route::put('/user/update', [UserController::class, 'update'])->name('user.update');
 // Route::get('/user/destroy', [UserController::class, 'destroy'])->name('user.destroy');
 // Route::post('/user/destroy', [UserController::class, 'destroy'])->name('user.destroy');
 Route::delete('/user/destroy', [UserController::class, 'destroy'])->name('user.destroy');
 Route::post('/register', [UserController::class, 'register_action'])->name('register.action');
-Route::post('/user/edit', [UserController::class, 'update'])->name('user.update');
 Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::post('/login', [UserController::class, 'login_action'])->name('login.action');
 Route::get('/password', [UserController::class, 'password'])->name('password');
@@ -47,6 +49,10 @@ Route::post('/password', [UserController::class, 'password_action'])->name('pass
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 Route::resource('menu', MenuController::class);
 Route::resource('pemesanan', PemesananController::class);
+
+
+//route menu
+Route::post('/admin/menu/tambah', [MenuController::class, 'store'])->name('menu.store');
 
 
 // Route::get('/kasir', function () {
@@ -65,4 +71,3 @@ Route::resource('pemesanan', PemesananController::class);
 //     return view('admin.menu',["page" => "menu"]);
 // });
 // Route::resource('user', UserController::class);
-

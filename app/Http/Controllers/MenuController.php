@@ -18,7 +18,7 @@ class MenuController extends Controller
     {
         $data['title'] = 'Menu';
         $data['q'] = $request->get('q');
-        $data['menu'] = Menu::where('nama_menu', 'like', '%' .$data['q']. '%')->join('kategori', 'menu.id_kategori', '=', 'kategori.id_kategori')->get();
+        $data['menu'] = Menu::where('nama_menu', 'like', '%' . $data['q'] . '%')->join('kategori', 'menu.id_kategori', '=', 'kategori.id_kategori')->get();
         return view('menu.index', $data);
     }
 
@@ -48,12 +48,12 @@ class MenuController extends Controller
             'id_kategori' => 'required',
             'gambar' => 'required|mimes:jpg,jpeg,png|file|max:2000'
         ]);
-        if($request->file('gambar')){
+        if ($request->file('gambar')) {
             $validatedData['gambar'] = $request->file('gambar')->store('menu-images');
         }
         // $menu->save();
         Menu::create($validatedData);
-        return redirect()->route('menu.index')->with('success', 'Success Creating Menu');
+        return redirect()->route('admin.menu')->with('success', 'Success Creating Menu');
     }
 
     /**
@@ -96,8 +96,8 @@ class MenuController extends Controller
             'id_kategori' => 'required',
             'gambar' => 'required|mimes:jpg,jpeg,png|file|max:2000'
         ]);
-        if($request->file('gambar')){
-            if($request->oldImage){
+        if ($request->file('gambar')) {
+            if ($request->oldImage) {
                 Storage::delete($request->oldImage);
             }
             $validatedData['gambar'] = $request->file('gambar')->store('menu-images');
