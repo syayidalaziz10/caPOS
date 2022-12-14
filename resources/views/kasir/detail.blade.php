@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     @vite('resources/css/app.css')
     <title>caPOS | Pesanan</title>
     <style>
@@ -15,6 +14,7 @@
 </head>
 <body class="font-body">
     <div class="flex">
+
 
         {{-- sidebar --}}
         <div class="bg-warna-2">
@@ -114,10 +114,59 @@
         <div class="bg-primary w-1/2 h-screen px-16 flex flex-col justify-between  overflow-auto scrollbar-hide">
             <div>
                 <div class="bg-primary sticky top-0 py-10">
-
                     <h1 class="text-4xl text-secondary  font-semibold tracking-wide">Detail Pesanan</h1>
                 </div>
-                <div id='listmenu' class="min-h-screen"></div>
+                <div class="min-h-screen">
+                    <div class="w-full text-secondary space-y-2 mb-8">
+                        <div class="flex justify-between">
+                            <div>
+                                Transcation
+                            </div>
+                            <div class="font-bold">P-101918W2319</div>
+                        </div>
+                        <div class="flex justify-between">
+                            <div>
+                                Kasir
+                            </div>
+                            <div class="font-bold">Alexandra Collins</div>
+                        </div>
+                    </div>
+                    <div class="w-full rounded-2xl h-auto bg-warna-2 text-secondary px-4 py-6">
+                        {{-- <div class="flex justify-around items-center font-bold text-lg bg-componen">
+                            <div></div>
+                            <div class="text-left bg-warna-3 justify-self-start">ITEM</div>
+                            <div>QTY</div>
+                            <div>TOTAL</div>
+                        </div>
+                        <div class="flex items-center text-lg justify-around bg-componen">
+                            <div>1</div>
+                            <div>
+                                <div>Eh Teh Juara</div>
+                                <div>Rp. 10.000</div>
+                            </div>
+                            <div>2</div>
+                            <div>Rp. 30.000</div>
+                        </div> --}}
+
+                        <table class="w-full">
+                            <tr>
+                                <th class="py-6"></th>
+                                <th class="text-left">ITEM</th>
+                                <th >QTY</th>
+                                <th>TOTAL</th>
+                            </tr>
+                            <tr>
+                                <td class="py-6 px-2">1</td>
+                                <td class="text-left ">
+                                    <h1 class="font-semibold">Es Teh Juara</h1>
+                                    <p>RP. 20000</p>
+                                </td>
+                                <td class=" text-center">2</td>
+                                <td class="text-center">RP. 20.000</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
 
             
 
@@ -125,15 +174,10 @@
             <div class="flex items-center pb-10 pt-4 bg-primary justify-between sticky bottom-0 justify-self-end text-secondary">
                 <div>
                     <p class="font-light">Total Harga</p>
-                    <h1 id="totalhg" class="text-4xl font-bold text-warna-3 ">Rp. 0</h1>
+                    <h1 id="totalhg" class="text-4xl font-bold text-warna-3 ">Rp. 40.000.000</h1>
                 </div>
                 <div>
-                    <form action="{{ route('register.action') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <input id="valMenu" type="hidden" name="valPesan">
-                        <input id="valJml" type="hidden" name="valJml">
-                        <button type="submit" data-token="{{csrf_token()}}" onclick="tmbh();" class="bg-sidebar text-secondary text-xl py-5 px-10 rounded-xl font-semibold">Submit</button>
-                    </form>
+                    <button type="submit" class="bg-sidebar text-secondary text-xl py-5 px-10 rounded-xl font-semibold">Submit</button>
                 </div>
             </div>
             {{-- end total harga --}}
@@ -142,188 +186,5 @@
 
         
     </div>
-    <script>
-
-        let valM = document.getElementById('valMenu');
-        let valJ = document.getElementById('valJml');
-
-        let lm = document.getElementById('listmenu');  
-        var ttlObj = document.getElementById('totalhg');  
-        let lstm = [];
-        let lstidm=[];
-        let lstVal=[1,2,3];
-        let lsthg=[];
-        let buttons = document.querySelectorAll('.btn');
-        var total =0;
-        
-        function tmbh(d)
-        {
-            valM.value = lstidm;
-            valJ.value = lstVal;
-            
-            // let token = d.getAttribute("data-token");
-            // console.log(token);
-            // const xhttp = new XMLHttpRequest();
-            // xhttp.open("POST", [token,"http://localhost:8000/register/"]);
-            // xhttp.send(lstidm);
-        }
-
-        buttons.forEach(button => {
-            button.addEventListener('click', function (){
-                this.classList.add('addorder');
-            });
-        })
-
-
-        function hasClass( target, className ) {
-            return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
-        }
-
-
-
-        function cobu(d){
-            const ss =  d.getAttribute("data-idmenu");
-            const nama =d.getAttribute("data-namamenu");
-            const harga =d.getAttribute("data-hargamenu");
-            const gambar =d.getAttribute("data-gambar");
-            const hg =d.getAttribute("data-hg");
-            let da = document.getElementById(d.getAttribute("data-idm")+"-inp");
-
-
-
-            let oo =    `<div class="bg-warna-2 rounded-3xl flex flex-col items-center ${ss} mb-10 py-4">
-                            <div class="flex justify-center items-center w-8/12 mb-4">
-                                <div>
-                                    <button data-idm=${ss} data-hg=${hg} onclick='krval(this);' class="submit px-4 py-1.5 text-secondary font-semibold text-2xl bg-primary rounded-full">-</button>
-                                </div>
-                                <div class="shadow rounded-2xl bg-primary p-4 flex items-center mx-6">
-                                    <div class="rounded-3xl mr-8 w-20 h-20 bg-cover bg-center bg-componen" style="background-image: url(img/${gambar})"></div>
-                                    <div class="text-secondary mr-12 ">
-                                        <h1 class="font-semibold tracking-wider break-words w-48"> ${nama}</h1>
-                                        <p class="font-extralight">${harga}</p>
-                                    </div>
-                                    <button data-idm=${ss} data-hg=${hg} onclick='hps(this);'>
-                                        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M29.75 8.47134C25.0325 8.00384 20.2867 7.76301 15.555 7.76301C12.75 7.76301 9.945 7.90468 7.14 8.18801L4.25 8.47134M12.0417 7.04051L12.3533 5.18467C12.58 3.83884 12.75 2.83301 15.1442 2.83301H18.8558C21.25 2.83301 21.4342 3.89551 21.6467 5.19884L21.9583 7.04051M26.7042 12.948L25.7833 27.2138C25.6275 29.438 25.5 31.1663 21.5475 31.1663H12.4525C8.5 31.1663 8.3725 29.438 8.21667 27.2138L7.29583 12.948M14.6342 23.3747H19.3517M13.4583 17.708H20.5417" stroke="#F0719C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </button>
-                                </div>
-                                <div>
-                                    <button data-idm=${ss} data-hg=${hg} onclick='tmbhval(this);' class="submit px-4 py-1.5 text-secondary font-semibold text-2xl bg-primary rounded-full">+</button>
-                                </div>
-                            </div>
-
-                            <div class="w-8/12 flex items-center justify-between">
-                                <div class="text-secondary font-semibold tracking-wide">Jumlah Pesan</div>
-                                <input id=${ss}-inp disabled type="number" min="1" class="bg-primary text-secondary text-3xl w-20 py-1.5 px-1 text-center rounded-xl font-bold" value=1>
-                            </div>
-                        </div>`;
-
-            // console.log(hasClass(d,"terklik"));
-            if (!hasClass(d,"terklik")) {
-                lstm.push(oo);
-                lstidm.push(ss);
-                
-                lsthg.push(d.value);
-
-                let cobustr = '';
-                for(let i=0;i<lstm.length;i++)
-                {
-                    cobustr+=lstm[i];
-                }
-                console.log(lstidm);
-                lm.innerHTML = cobustr;
-                d.classList.add('terklik');
-                total+= Number(hg);
-                ttlObj.innerHTML = formatRupiah(String(total), 'Rp. ');
-            }
-            
-            // alert(d.getAttribute("data-idmenu")+cobustr);
-        }
-
-
-
-        function hps(d)
-        {
-            let buttons = document.querySelectorAll('.addorder');
-            const hg = d.getAttribute("data-hg");
-
-            let ssd = document.getElementById(d.getAttribute("data-idm"));
-            let da = document.getElementById(d.getAttribute("data-idm")+"-inp");
-            ssd.classList.remove('addorder');
-            ssd.classList.remove('terklik');
-
-            let a1 = lstidm.indexOf(d.getAttribute("data-idm"));
-            lstm.splice(a1,1);
-            lstidm.splice(a1,1);
-            let cobustr = '';
-            for(let i=0;i<lstm.length;i++)
-            {
-                cobustr+=lstm[i];
-            }
-            console.log(cobustr);
-            lm.innerHTML = cobustr;
-            total-=Number(hg*da.value);
-            ttlObj.innerHTML = formatRupiah(String(total), 'Rp. ');
-
-        }
-
-
-
-
-
-
-        function tmbhval (d) {
-            const nama = d.getAttribute("data-idm");
-            const hg = d.getAttribute("data-hg");
-
-            let ssd = document.getElementById(nama+"-inp");
-            ssd.value = Number(ssd.value)+1;
-            total+= Number(hg);
-            console.log(hg);
-            ttlObj.innerHTML = formatRupiah(String(total), 'Rp. ');
-        }
-
-
-
-
-
-        function krval (d) {
-            const nama = d.getAttribute("data-idm");
-            const hg = d.getAttribute("data-hg");
-
-            let ssd = document.getElementById(nama+"-inp");
-            if(Number(ssd.value) > 1)
-            {
-                ssd.value = Number(ssd.value)-1;
-                total-=Number(hg);
-                console.log(total);
-                ttlObj.innerHTML = formatRupiah(String(total), 'Rp. ');
-                
-            }
-            
-
-        }
-
-        /* Fungsi formatRupiah */
-		function formatRupiah(angka, prefix){
-			var number_string = angka.replace(/[^,\d]/g, '').toString(),
-			split   		= number_string.split(','),
-			sisa     		= split[0].length % 3,
-			rupiah     		= split[0].substr(0, sisa),
-			ribuan     		= split[0].substr(sisa).match(/\d{3}/gi);
-
-			// tambahkan titik jika yang di input sudah menjadi angka ribuan
-			if(ribuan){
-				separator = sisa ? '.' : '';
-				rupiah += separator + ribuan.join('.');
-			}
-
-			rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-			return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
-		}
-
-
-    </script>
 </body>
 </html>
