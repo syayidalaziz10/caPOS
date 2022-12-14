@@ -65,7 +65,7 @@
     <div class="relative w-full max-w-5xl h-full md:h-auto">
         <!-- Modal content -->
         <form action="{{ route('register.action') }}" method="POST" enctype="multipart/form-data" class="relative rounded-xl shadow bg-warna-2">
-            {{ method_field('PUT') }}
+     
             @csrf
             <!-- Modal header -->
             <div class="p-6">
@@ -247,48 +247,7 @@
 </div>
 {{-- end modal edit user --}}
 
-{{-- script modal --}}
-<script>
-    let fileinput = document.getElementById('profil');
-    let spanfile = document.getElementById('fileName');
-    let aa;
-    fileinput.onchange = function () {
-        aa = this.value.split("\\");
-        spanfile.innerHTML = aa[aa.length-1];
-    };
 
-    let idUserObj   = document.getElementById('idUserEdit');
-    let usernameObj = document.getElementById('usernameEdit');
-    let profilObj   = document.getElementById('profilEdit');
-    let namaLengkapObj = document.getElementById('namalengkapEdit');
-    let hpObj       = document.getElementById('hpEdit');
-    let alamatObj   = document.getElementById('alamatEdit');
-    let genderObj   = document.getElementById('genderEdit');
-    let tanggalObj   = document.getElementById('ttlEdit');
-
-    function editModal(obj)
-    {
-        //obj
-        const idUser   = obj.getAttribute("data-idUser");
-        const username = obj.getAttribute("data-username");
-        const namaUser = obj.getAttribute("data-namaUser");
-        const tanggal  = obj.getAttribute("data-tanggal");
-        const alamat   = obj.getAttribute("data-alamat");
-        const gender   = obj.getAttribute("data-jenisKelamin");
-        const no       = obj.getAttribute("data-noHp");
-        const gambar   = obj.getAttribute("data-gambar");
-        console.log(gambar);
-        idUserObj.value   = idUser;
-        usernameObj.value = username;
-        namaLengkapObj.value = namaUser;
-        tanggalObj.value = tanggal;
-        alamatObj.value = alamat;
-        hpObj.value = no;
-        profilObj.style.background      = `url('${gambar}') top center`;
-        profilObj.style.background.size = 'cover';
-        
-    }
-</script>
 
 @endsection
 

@@ -24,18 +24,22 @@
         </thead>
         <tbody>
             {{-- data user --}}
-            
+            @foreach($menu as $mn)
             <tr>
-                <td class="bg-primary rounded-xl">1</td>
-                <td class="bg-primary rounded-xl ">Nasi Goreng Mandarin</td>
-                <td class="bg-primary rounded-xl">20.000</td>
-                <td class="bg-primary rounded-xl">Makanan</td>
+                <td class="bg-primary rounded-xl">{{ $i }}</td>
+                <td class="bg-primary rounded-xl ">{{ $mn->nama_menu }}</td>
+                <td class="bg-primary rounded-xl">{{ $mn->harga }}</td>
+                <td class="bg-primary rounded-xl">{{ $mn->nama_kategori }}</td>
                 <td class="bg-primary rounded-xl rounded-r-xl">
-                    <button class="p-3 bg-primary rounded-lg m-2">
-                        <svg width="23" height="25" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M29.75 8.47134C25.0325 8.00384 20.2867 7.76301 15.555 7.76301C12.75 7.76301 9.945 7.90468 7.14 8.18801L4.25 8.47134M12.0417 7.04051L12.3533 5.18467C12.58 3.83884 12.75 2.83301 15.1442 2.83301H18.8558C21.25 2.83301 21.4342 3.89551 21.6467 5.19884L21.9583 7.04051M26.7042 12.948L25.7833 27.2138C25.6275 29.438 25.5 31.1663 21.5475 31.1663H12.4525C8.5 31.1663 8.3725 29.438 8.21667 27.2138L7.29583 12.948M14.6342 23.3747H19.3517M13.4583 17.708H20.5417" stroke="#F0719C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg> 
-                    </button>
+                    <form method="POST" class="inline" action="{{ route('menu.destroy', ['menu' => $mn->id_menu]) }}" onsubmit="return confirm('Delete?')">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="p-3 bg-primary rounded-lg m-2">
+                            <svg width="23" height="25" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M29.75 8.47134C25.0325 8.00384 20.2867 7.76301 15.555 7.76301C12.75 7.76301 9.945 7.90468 7.14 8.18801L4.25 8.47134M12.0417 7.04051L12.3533 5.18467C12.58 3.83884 12.75 2.83301 15.1442 2.83301H18.8558C21.25 2.83301 21.4342 3.89551 21.6467 5.19884L21.9583 7.04051M26.7042 12.948L25.7833 27.2138C25.6275 29.438 25.5 31.1663 21.5475 31.1663H12.4525C8.5 31.1663 8.3725 29.438 8.21667 27.2138L7.29583 12.948M14.6342 23.3747H19.3517M13.4583 17.708H20.5417" stroke="#F0719C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg> 
+                        </button>
+                    </form>
                     <button class="p-3 bg-primary rounded-lg" data-modal-toggle="staticModalEdit">
                         <svg width="20" height="25" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10.2719 2H8.55734C4.271 2 2.55646 4 2.55646 9V15C2.55646 20 4.271 22 8.55734 22H13.701C17.9873 22 19.7018 20 19.7018 15V13" stroke="#F0719C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -45,6 +49,9 @@
                     </button>
                 </td>
             </tr>
+            <?php $i++; ?>
+            @endforeach
+
         </tbody>
     </table>
 </div>

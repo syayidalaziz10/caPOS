@@ -60,13 +60,6 @@ class UserController extends Controller
             'q'     => $request->get('q')
         ];
 
-        $data['users'] = User::where('level', '=', 'kasir')
-            ->where(function ($query) use ($data) {
-                $query->where('nama', 'like', '%' . $data['q'] . '%')
-                    ->orWhere('username', 'like', '%' . $data['q'] . '%')
-                    ->orWhere('no_hp', 'like', '%' . $data['q'] . '%');
-            })->get();
-        return view('', $data);
         $data['menu']  = Menu::where('nama_menu', 'like', '%' . $data['q'] . '%')->join('kategori', 'menu.id_kategori', '=', 'kategori.id_kategori')->get();
         $data['users'] = User::where('level', '=', 'kasir')
             ->where(function ($query) use ($data) {
@@ -133,7 +126,7 @@ class UserController extends Controller
             'q'     => $request->get('q')
         ];
 
-        $data['menu'] = Menu::get();
+        $data['menu'] = Menu::where('nama_menu', 'like', '%' . $data['q'] . '%')->join('kategori', 'menu.id_kategori', '=', 'kategori.id_kategori')->get();
         return view('admin/menu', $data);
     }
 
@@ -252,7 +245,7 @@ class UserController extends Controller
             $validatedData['gambar'] = $request->file('gambar')->store('menu-images');
         }
 
-        $user = User::findOrFail($id);
+        $user = User::find($id);
         $user->save($validatedData);
 
         // dd($user);

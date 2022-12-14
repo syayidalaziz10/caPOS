@@ -94,7 +94,7 @@ class MenuController extends Controller
             'nama_menu' => 'required',
             'harga' => 'required',
             'id_kategori' => 'required',
-            'gambar' => 'required|mimes:jpg,jpeg,png|file|max:2000'
+            'gambar' => 'image|file|max:2000'
         ]);
         if ($request->file('gambar')) {
             if ($request->oldImage) {
@@ -119,6 +119,6 @@ class MenuController extends Controller
             Storage::delete($menu->gambar);
         }
         Menu::destroy($menu->id_menu);
-        return redirect()->route('menu.index')->with('success', 'Success Deleting Menu');
+        return redirect()->route('admin.menu')->with('success', 'Success Deleting Menu');
     }
 }
