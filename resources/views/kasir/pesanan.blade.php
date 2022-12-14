@@ -15,7 +15,6 @@
 </head>
 <body class="font-body">
     <div class="flex">
-
         {{-- sidebar --}}
         <div class="bg-warna-2">
             <div class="flex h-screen w-36 bg-sidebar rounded-r-3xl flex-col justify-between p-10">
@@ -77,33 +76,18 @@
                 </div>
                 <h1 class="text-secondary text-2xl font-semibold mr-80 pb-4">Daftar Menu</h1>
                 <div class="overflow-auto w-full flex flex-col items-center scrollbar-hide">
+                    
                     {{-- daftar menu --}}
-                    <button id="M-01" data-idmenu="M-01" data-namamenu='Americano' data-hargamenu="Rp. 12.000" data-gambar = 'Americano.jpg' data-hg=12000  onclick="cobu(this);" class="btn w-8/12 mt-10 shadow rounded-2xl bg-primary p-4 flex">
-                        <div class="rounded-3xl mr-8 w-20 h-20 bg-cover bg-center" style="background-image: url(img/Americano.jpg)"></div>
+                    @foreach($menu as $mn)
+                    <button id="{{$mn->id_menu}}" data-idmenu="{{$mn->id_menu}}" data-namamenu='{{$mn->nama_menu}}' data-hargamenu="Rp. {{$mn->harga}}" data-gambar = '{{$mn->gambar}}' data-hg={{$mn->harga}}  onclick="cobu(this);" class="btn w-8/12 mt-10 shadow rounded-2xl bg-primary p-4 flex">
+                        <div class="rounded-3xl mr-8 w-20 h-20 bg-cover bg-center bg-componen" style="background-image: url('{{ asset('storage/'. $mn->gambar) }}')"></div>
                         <div class="py-3 text-secondary">
-                            <h1 class="font-semibold tracking-wider">Americano</h1>
-                            <p class="font-extralight text-left">Rp. 12.000</p>
+                            <h1 class="font-semibold tracking-wider">{{$mn->nama_menu}}</h1>
+                            <p class="font-extralight text-left">Rp. {{$mn->harga}}</p>
                         </div>
                     </button>
                     {{-- end daftar menu --}}
-                    {{-- daftar menu --}}
-                    <button id="M-02" data-idmenu="M-02" data-namamenu='Es Teh' data-hargamenu="Rp. 3000" data-gambar = 'icetea.jpg' data-hg=3000 onclick="cobu(this);" class="btn w-8/12 mt-10 shadow rounded-2xl bg-primary p-4 flex">
-                        <div class="rounded-3xl mr-8 w-20 h-20 bg-cover bg-center" style="background-image: url(img/icetea.jpg)"></div>
-                        <div class="py-3 text-secondary">
-                            <h1 class="font-semibold tracking-wider">Es Teh</h1>
-                            <p class="font-extralight text-left">Rp. 3.000</p>
-                        </div>
-                    </button>
-                    {{-- end daftar menu --}}
-                    {{-- daftar menu --}}
-                    <button id="M-03" data-idmenu="M-03" data-namamenu='Matcha' data-hargamenu="Rp. 15.000" data-gambar = 'Matcha.jpeg' data-hg=15000 onclick="cobu(this);" class="btn w-8/12 mt-10 shadow rounded-2xl bg-primary p-4 flex">
-                        <div class="rounded-3xl mr-8 w-20 h-20 bg-cover bg-center" style="background-image: url(img/Matcha.jpeg)"></div>
-                        <div class="py-3 text-secondary">
-                            <h1 class="font-semibold tracking-wider">Matcha</h1>
-                            <p class="font-extralight text-left">Rp. 15.000</p>
-                        </div>
-                    </button>
-                    {{-- end daftar menu --}}
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -128,11 +112,11 @@
                     <h1 id="totalhg" class="text-4xl font-bold text-warna-3 ">Rp. 0</h1>
                 </div>
                 <div>
-                    <form action="{{ route('register.action') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('pemesanan.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <input id="valMenu" type="hidden" name="valPesan">
-                        <input id="valJml" type="hidden" name="valJml">
-                        <button type="submit" data-token="{{csrf_token()}}" onclick="tmbh();" class="bg-sidebar text-secondary text-xl py-5 px-10 rounded-xl font-semibold">Submit</button>
+                        <input id="valMenu" type="hidden" name="nama_menu">
+                        <input id="valJml" type="hidden" name="jumlah">
+                        <button type="submit" onclick="tmbh();" class="bg-sidebar text-secondary text-xl py-5 px-10 rounded-xl font-semibold">Submit</button>
                     </form>
                 </div>
             </div>
@@ -151,7 +135,7 @@
         var ttlObj = document.getElementById('totalhg');  
         let lstm = [];
         let lstidm=[];
-        let lstVal=[1,2,3];
+        let lstVal=[];
         let lsthg=[];
         let buttons = document.querySelectorAll('.btn');
         var total =0;
@@ -160,6 +144,7 @@
         {
             valM.value = lstidm;
             valJ.value = lstVal;
+            console.log(valJ.value)
             
             // let token = d.getAttribute("data-token");
             // console.log(token);
@@ -178,8 +163,6 @@
         function hasClass( target, className ) {
             return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
         }
-
-
 
         function cobu(d){
             const ss =  d.getAttribute("data-idmenu");
@@ -223,7 +206,7 @@
             if (!hasClass(d,"terklik")) {
                 lstm.push(oo);
                 lstidm.push(ss);
-                
+                lstVal.push(1);
                 lsthg.push(d.value);
 
                 let cobustr = '';
@@ -232,6 +215,7 @@
                     cobustr+=lstm[i];
                 }
                 console.log(lstidm);
+                console.log(lstVal);
                 lm.innerHTML = cobustr;
                 d.classList.add('terklik');
                 total+= Number(hg);
@@ -256,6 +240,7 @@
             let a1 = lstidm.indexOf(d.getAttribute("data-idm"));
             lstm.splice(a1,1);
             lstidm.splice(a1,1);
+            lstVal.splice(a1,1);
             let cobustr = '';
             for(let i=0;i<lstm.length;i++)
             {
@@ -278,7 +263,9 @@
             const hg = d.getAttribute("data-hg");
 
             let ssd = document.getElementById(nama+"-inp");
+            let a1  = lstidm.indexOf(nama);
             ssd.value = Number(ssd.value)+1;
+            lstVal[a1]+=1;
             total+= Number(hg);
             console.log(hg);
             ttlObj.innerHTML = formatRupiah(String(total), 'Rp. ');

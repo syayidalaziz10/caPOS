@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
-    <title>caPOS | Manajemen Manajer</title>
+    <title>caPOS | {{$title}}</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="font-body bg-primary flex w-full">

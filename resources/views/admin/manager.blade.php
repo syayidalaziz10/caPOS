@@ -107,7 +107,7 @@
                     </div>
                     <div class="w-1/2 space-y-3">
                         <div>
-                            <h2 class="text-xs font-bold text-secondary">BIODATA USER KASIR</h2>
+                            <h2 class="text-xs font-bold text-secondary">BIODATA USER MANAGER</h2>
                         </div>
                         <div>
                             <label for="namalengkap" class="block text-secondary text-sm mb-2">Nama Lengkap</label>
@@ -128,8 +128,8 @@
                         <div>
                             <label for="gender" class="block text-secondary text-sm mb-2">Jenis Kelamin</label>
                             <select name="jenis_kelamin" id="gender" class="w-full bg-primary text-secondary py-2 px-6 rounded-xl">
-                                <option value="man">Laki-Laki</option>
-                                <option value="woman">Perempuan</option>
+                                <option value="pria">Pria</option>
+                                <option value="wanita">Wanita</option>
                             </select>
                         </div>
                     </div>
