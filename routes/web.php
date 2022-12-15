@@ -32,7 +32,7 @@ Route::get('/admin/menu', [UserController::class, 'adminMenu'])->name('admin.men
 
 Route::get('/register', [UserController::class, 'register'])->name('register');
 Route::get('/kasir', [UserController::class, 'kasir'])->name('kasir.pemesanan');
-Route::get('/manajer', [UserController::class, 'manajer'])->name('manajer');
+Route::get('/manajer', [PemesananController::class, 'index'])->name('manajer');
 Route::get('/user/createkasir', [UserController::class, 'createKasir'])->name('user.createKasir');
 Route::get('/user/createmanajer', [UserController::class, 'createManajer'])->name('user.createManajer');
 // Route::get('/user/edit', [UserController::class, 'edit'])->name('user.edit');
