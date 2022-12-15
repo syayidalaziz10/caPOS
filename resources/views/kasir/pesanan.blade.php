@@ -11,6 +11,25 @@
         .addorder {
             border: 2px solid white;
         }
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #1E2541;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #F0719C;
+            border-radius: 1rem;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FFA46B ;
+        }
     </style>
 </head>
 <body onload="alert('Pesaanan ditambahkan');" class="font-body">
@@ -79,7 +98,7 @@
                     </svg>
                 </div> --}}
                 <h1 class="text-secondary text-2xl font-semibold mr-80 pb-4">Daftar Menu</h1>
-                <div class="overflow-auto w-full flex flex-col items-center scrollbar-hide">
+                <div class="overflow-auto w-full flex flex-col items-center">
                     
                     {{-- daftar menu --}}
                     @foreach($menu as $mn)

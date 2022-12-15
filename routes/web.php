@@ -54,9 +54,23 @@ Route::resource('pemesanan', PemesananController::class);
 Route::post('/admin/menu/tambah', [MenuController::class, 'store'])->name('menu.store');
 
 
-// Route::get('/kasir', function () {
-//     return view('kasir.pesanan');
-// });
+
+//route manager
+
+
+Route::get('/manager', function () {
+    return view('manager.beranda', [
+        "page" => "Manager",
+        "title" => "Manager"
+    ]);
+});
+
+Route::get('/report', function () {
+    return view('manager.report', [
+        "page" => "Manager",
+        "title" => "Manager"
+    ]);
+});
 
 // Route::get('/admin/kasir', function () {
 //     return view('admin.kasir',["page" => "kasir"]);
