@@ -14,12 +14,18 @@
     <content class="w-full h-screen overflow-auto px-16"> @yield('content') </content>
 
     <script>
-        let fileinput = document.getElementById('profil');
-        let spanfile  = document.getElementById('fileName');
+        let fileinput     = document.getElementById('profil');
+        let fileinputEdit = document.getElementById('profilEdits');
+        let spanfile      = document.getElementById('fileName');
+        let spanfileEdit  = document.getElementById('fileNameEdit');
         let aa;
         fileinput.onchange = function () {
             aa = this.value.split("\\");
             spanfile.innerHTML = aa[aa.length-1];
+        };
+        fileinputEdit.onchange = function () {
+            aa = this.value.split("\\");
+            spanfileEdit.innerHTML = aa[aa.length-1];
         };
     
         let idUserObj      = document.getElementById('idUserEdit');

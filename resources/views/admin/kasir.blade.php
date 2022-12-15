@@ -102,13 +102,13 @@
                         <div>
                             <label class="text-secondary text-sm">Gambar</label>
                             <label for="profil" class="block text-secondary mt-2">
-                                <div class="bg-primary rounded-xl h-48 w-full flex justify-center items-center py-7 relative cursor-pointer">
+                                <div class="bg-primary rounded-xl h-48 w-full flex flex-col justify-center items-center py-7 relative cursor-pointer">
                                     <svg width="78" height="78" viewBox="0 0 78 78" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M76.8492 58.344L64.6394 29.835C60.5045 20.163 52.8978 19.773 47.7876 28.977L40.4149 42.276C36.6701 49.023 29.6875 49.608 24.8504 43.563L23.9922 42.471C18.96 36.153 11.8604 36.933 8.23257 44.148L1.52304 57.603C-3.19704 66.963 3.62952 78 14.0839 78H63.8593C74.0016 78 80.8281 67.665 76.8492 58.344ZM19.4671 23.4C22.5709 23.4 25.5475 22.1673 27.7422 19.9732C29.9369 17.779 31.1698 14.803 31.1698 11.7C31.1698 8.59697 29.9369 5.62103 27.7422 3.42685C25.5475 1.23268 22.5709 0 19.4671 0C16.3634 0 13.3868 1.23268 11.1921 3.42685C8.99742 5.62103 7.76446 8.59697 7.76446 11.7C7.76446 14.803 8.99742 17.779 11.1921 19.9732C13.3868 22.1673 16.3634 23.4 19.4671 23.4Z" fill="#BDCCD4" fill-opacity="0.5"/>
                                     </svg>
-                                    <span id="fileName"></span>
-                                    <input type="file" name="gambar" id="profil" class="invisible absolute top-0">
+                                    <span id="fileName" class="mt-4"></span>
                                 </div>
+                                <input type="file" name="gambar" id="profil" class="invisible absolute top-0">
                             </label>
                         </div>
                         <input type="hidden" name="level" value="kasir">
@@ -161,7 +161,7 @@
 <div id="staticModalEdit" data-modal-backdrop="static" tabindex="-1" aria-label="hidden" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 p-4 w-full md:inset-0 h-modal md:h-full">
     <div class="relative w-full max-w-5xl h-full md:h-auto">
         <!-- Modal content -->
-        <form action="{{ route('user.update', $user) }}" method="POST" enctype="multipart/form-data" class="relative rounded-xl shadow bg-warna-2">
+        <form action="{{ route('user.update') }}" method="POST" enctype="multipart/form-data" class="relative rounded-xl shadow bg-warna-2">
             @method('POST')
             @csrf
             <!-- Modal header -->
@@ -184,6 +184,7 @@
                         </div>
                         <div>
                             <input type="hidden" name="idUser" id="idUserEdit">
+                            <input type="hidden" name="level" value="kasir">
                             <label for="usernameEdit" class="block text-secondary text-sm mb-2">Username</label>
                             <input type="text" id="usernameEdit" name="username" class="w-full bg-primary py-2 px-6 rounded-xl text-secondary">
                         </div>
@@ -198,10 +199,11 @@
                             <div class="w-full">
                                 <label class="text-secondary text-sm">Gambar</label>
                                 <label for="profilEdits" class="block text-secondary mt-2">
-                                    <div class="bg-primary rounded-xl w-full h-48 flex justify-center items-center py-7 relative cursor-pointer">
+                                    <div class="bg-primary rounded-xl w-full h-48 flex justify-center items-center flex-col py-7 relative cursor-pointer">
                                         <svg width="78" height="78" viewBox="0 0 78 78" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M76.8492 58.344L64.6394 29.835C60.5045 20.163 52.8978 19.773 47.7876 28.977L40.4149 42.276C36.6701 49.023 29.6875 49.608 24.8504 43.563L23.9922 42.471C18.96 36.153 11.8604 36.933 8.23257 44.148L1.52304 57.603C-3.19704 66.963 3.62952 78 14.0839 78H63.8593C74.0016 78 80.8281 67.665 76.8492 58.344ZM19.4671 23.4C22.5709 23.4 25.5475 22.1673 27.7422 19.9732C29.9369 17.779 31.1698 14.803 31.1698 11.7C31.1698 8.59697 29.9369 5.62103 27.7422 3.42685C25.5475 1.23268 22.5709 0 19.4671 0C16.3634 0 13.3868 1.23268 11.1921 3.42685C8.99742 5.62103 7.76446 8.59697 7.76446 11.7C7.76446 14.803 8.99742 17.779 11.1921 19.9732C13.3868 22.1673 16.3634 23.4 19.4671 23.4Z" fill="#BDCCD4" fill-opacity="0.5"/>
                                         </svg>
+                                        <span id="fileNameEdit" class="mt-4"></span>
                                     </div>
                                 </label>
                                 <input type="file" name="gambar" id="profilEdits" class="invisible absolute top-0">

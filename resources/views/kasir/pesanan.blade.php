@@ -151,32 +151,26 @@
     </div>
     <script>
 
-        let valM = document.getElementById('valMenu');
-        let valJ = document.getElementById('valJml');
+        let valM    = document.getElementById('valMenu');
+        let valJ    = document.getElementById('valJml');
+        let lm      = document.getElementById('listmenu');  
+        var ttlObj  = document.getElementById('totalhg');  
 
-        let lm = document.getElementById('listmenu');  
-        var ttlObj = document.getElementById('totalhg');  
-        let lstm = [];
-        let lstidm=[];
-        let lstNm=[];
-        let lstVal=[];
-        let lsthg=[];
-        let lstGb=[];
+        let lstm    =[];
+        let lstidm  =[];
+        let lstNm   =[];
+        let lstVal  =[];
+        let lsthg   =[];
+        let lstGb   =[];
 
         let buttons = document.querySelectorAll('.btn');
-        var total =0;
+        var total   = 0;
         
         function tmbh(d)
         {
             valM.value = lstidm;
             valJ.value = lstVal;
-            console.log(valJ.value)
-            
-            // let token = d.getAttribute("data-token");
-            // console.log(token);
-            // const xhttp = new XMLHttpRequest();
-            // xhttp.open("POST", [token,"http://localhost:8000/register/"]);
-            // xhttp.send(lstidm);
+            console.log(valJ.value);
         }
 
         buttons.forEach(button => {
@@ -191,18 +185,13 @@
         }
 
         function cobu(d){
-            const ss =  d.getAttribute("data-idmenu");
-            const nama =d.getAttribute("data-namamenu");
+            const ss    =  d.getAttribute("data-idmenu");
+            const nama  =d.getAttribute("data-namamenu");
             const harga =d.getAttribute("data-hargamenu");
-            const gambar =d.getAttribute("data-gambar");
-            const hg =d.getAttribute("data-hg");
-            let da = document.getElementById(d.getAttribute("data-idm")+"-inp");
+            const gambar=d.getAttribute("data-gambar");
+            const hg    =d.getAttribute("data-hg");
+            let da      = document.getElementById(d.getAttribute("data-idm")+"-inp");
 
-
-
-            // let oo =   ;
-
-            // console.log(hasClass(d,"terklik"));
             if (!hasClass(d,"terklik")) {
                 lstidm.push(ss);
                 lstVal.push(1);
@@ -239,6 +228,7 @@
                             </div>
                         </div>`);
 
+
                 let cobustr = '';
                 for(let i=0;i<lstm.length;i++)
                 {
@@ -270,8 +260,8 @@
                             </div>
                         </div>`+cobustr ;
                 }
-                console.log(lstidm);
-                console.log(lstVal);
+                // console.log(lstidm);
+                // console.log(lstVal);
                 lm.innerHTML = cobustr;
                 d.classList.add('terklik');
                 total+= Number(hg);
@@ -286,10 +276,10 @@
         function hps(d)
         {
             let buttons = document.querySelectorAll('.addorder');
-            const hg = d.getAttribute("data-hg");
+            const hg    = d.getAttribute("data-hg");
 
             let ssd = document.getElementById(d.getAttribute("data-idm"));
-            let da = document.getElementById(d.getAttribute("data-idm")+"-inp");
+            let da  = document.getElementById(d.getAttribute("data-idm")+"-inp");
             ssd.classList.remove('addorder');
             ssd.classList.remove('terklik');
 
@@ -333,7 +323,7 @@
                             </div>
                         </div>`+cobustr ;   
             }
-            console.log(cobustr);
+            // console.log(cobustr);
             lm.innerHTML = cobustr;
             
             ttlObj.innerHTML = formatRupiah(String(total), 'Rp. ');
@@ -344,13 +334,13 @@
 
 
 
-
+        /* --------------------- FUNGSI TAMBAH DAN KURANG VALUE MENU  --------------------- */
         function tmbhval (d) {
             const nama = d.getAttribute("data-idm");
-            const hg = d.getAttribute("data-hg");
+            const hg   = d.getAttribute("data-hg");
 
-            let ssd = document.getElementById(nama+"-inp");
-            let a1  = lstidm.indexOf(nama);
+            let ssd   = document.getElementById(nama+"-inp");
+            let a1    = lstidm.indexOf(nama);
             ssd.value = Number(ssd.value)+1;
             lstVal[a1]+=1;
             total+= Number(hg);
@@ -358,28 +348,25 @@
             ttlObj.innerHTML = formatRupiah(String(total), 'Rp. ');
         }
 
-
-
-
-
         function krval (d) {
             const nama = d.getAttribute("data-idm");
-            const hg = d.getAttribute("data-hg");
+            const hg   = d.getAttribute("data-hg");
 
             let ssd = document.getElementById(nama+"-inp");
             let a1  = lstidm.indexOf(nama);
-            lstVal[a1]-=1;
+
             if(Number(ssd.value) > 1)
             {
+                lstVal[a1]-=1;
                 ssd.value = Number(ssd.value)-1;
                 total-=Number(hg);
                 console.log(total);
                 ttlObj.innerHTML = formatRupiah(String(total), 'Rp. ');
-                
             }
             
 
         }
+        /* --------------------- END FUNGSI TAMBAH DAN KURANG VALUE MENU  --------------------- */
 
         /* Fungsi formatRupiah */
 		function formatRupiah(angka, prefix){

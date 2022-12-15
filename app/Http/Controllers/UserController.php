@@ -248,24 +248,21 @@ class UserController extends Controller
             if ($request->profilSekarang != null) {
                 Storage::delete($request->profilSekarang);
             }
-            $validatedData['gambar'] = $request->file('gambar')->store('posts-images');
+            $validatedData['gambar'] = $request->file('gambar')->store('post-images');
         }
 
-        User::where('id_user', $user->update($validatedData));
-        if ($user->level == 'admin') {
-            return redirect()->route('admin')->with('success', 'Success Deleting Menu');
+        User::where('id_user', $request->idUser)->update($validatedData);
+        if ($request->level == 'kasir') {
+            return redirect()->route('admin.kasir')->with('success', 'Success Update User');
         }
-        else if ($user->level == 'kasir') {
-            return redirect()->route('admin.kasir')->with('success', 'Success Deleting Menu');
-        }
-        else if ($user->level == 'manajer') {
-            return redirect()->route('admin.manajer')->with('success', 'Success Deleting Menu');
+        else if ($request->level == 'manajer') {
+            return redirect()->route('admin.manajer')->with('success', 'Success Update User');
         }
     }
 
     public function destroy(User $user)
     {
-        var_dump($_GET["user"]);
+        // var_dump($_GET["user"]);
         // ddd($user);
         if ($_GET["gambar"]) {
             Storage::delete($_GET["gambar"]);
