@@ -15,21 +15,21 @@
 
     <script>
         let fileinput = document.getElementById('profil');
-        let spanfile = document.getElementById('fileName');
+        let spanfile  = document.getElementById('fileName');
         let aa;
         fileinput.onchange = function () {
             aa = this.value.split("\\");
             spanfile.innerHTML = aa[aa.length-1];
         };
     
-        let idUserObj   = document.getElementById('idUserEdit');
-        let usernameObj = document.getElementById('usernameEdit');
-        let profilObj   = document.getElementById('profilEdit');
+        let idUserObj      = document.getElementById('idUserEdit');
+        let usernameObj    = document.getElementById('usernameEdit');
+        let profilObj      = document.getElementById('profilEdit');
         let namaLengkapObj = document.getElementById('namalengkapEdit');
-        let hpObj       = document.getElementById('hpEdit');
-        let alamatObj   = document.getElementById('alamatEdit');
-        let genderObj   = document.getElementById('genderEdit');
-        let tanggalObj   = document.getElementById('ttlEdit');
+        let hpObj          = document.getElementById('hpEdit');
+        let alamatObj      = document.getElementById('alamatEdit');
+        let genderObj      = document.getElementById('genderEdit');
+        let tanggalObj     = document.getElementById('ttlEdit');
         let gambarSkgObj   = document.getElementById('gambarEditSkg');
 
     
@@ -46,14 +46,14 @@
             const gambar   = obj.getAttribute("data-gambar");
             const gambarS  = obj.getAttribute("data-gambarSkg");
 
-            console.log(gambarS);
-            idUserObj.value   = idUser;
-            usernameObj.value = username;
+            // console.log(gambarS);
+            idUserObj.value      = idUser;
+            usernameObj.value    = username;
             namaLengkapObj.value = namaUser;
-            tanggalObj.value = tanggal;
-            alamatObj.value = alamat;
-            hpObj.value = no;
-            gambarSkgObj.value = gambarS;
+            tanggalObj.value     = tanggal;
+            alamatObj.value      = alamat;
+            hpObj.value          = no;
+            gambarSkgObj.value   = gambarS;
 
             profilObj.style.background      = `url('${gambar}') top center`;
             profilObj.style.backgroundSize  = 'cover';
