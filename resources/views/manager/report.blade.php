@@ -1,5 +1,5 @@
-@extends('admin.template.main')
-@include('admin.template.sidebar')
+@extends('manager.template.main')
+@include('manager.template.sidebar')
 
 @section('content')
 
@@ -72,7 +72,7 @@
                     MENU YANG TERJUAL
                 </div>
                 {{-- div item menu --}}
-                <div class="h-60 overflow-auto space-y-2 flex flex-col mb-10 pr-4">
+                <div class="h-56 overflow-auto space-y-2 flex flex-col mb-10 pr-4">
                     <div class="flex w-full h-28 bg-primary rounded-3xl p-4 justify-between">
                         <div class="flex items-center space-x-10">
                             <div class="bg-warna-3 w-20 h-20 rounded-3xl"></div>

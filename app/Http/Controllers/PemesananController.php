@@ -9,6 +9,7 @@ use App\Models\Kategori;
 use Illuminate\Http\Request;
 use Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class PemesananController extends Controller
 {
@@ -17,12 +18,123 @@ class PemesananController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // public function index(Request $request)
+    // {
+    //     $data['title'] = 'Menu';
+    //     $data['q'] = $request->get('q');
+    //     $data['menu'] = Menu::where('nama_menu', 'like', '%' .$data['q']. '%')->join('kategori', 'menu.id_kategori', '=', 'kategori.id_kategori')->get();
+    //     return view('pemesanan.index', $data);
+    // }
+
+    //SUM PENDAPATAN PERBULAN
+    // SELECT SUM(dp.jumlah*mn.harga) FROM detail_pemesanan as dp
+    // INNER JOIN pemesanan as ps, menu as mn
+    // WHERE dp.id_menu = mn.id_menu 
+    // AND ps.id_pemesanan = dp.id_pemesanan 
+    // AND ps.tanggal_pemesanan 
+    // BETWEEN  "2022-12-14" AND "2022-12-25"
+
+    //GET DATA PEMESANAN PERBULAN
+    // SELECT * FROM detail_pemesanan as dp
+    // INNER JOIN pemesanan as ps, menu as mn
+    // WHERE dp.id_menu = mn.id_menu 
+    // AND ps.id_pemesanan = dp.id_pemesanan 
+    // AND ps.tanggal_pemesanan 
+    // BETWEEN  "2022-12-14" AND "2022-12-25"
+
+    //GET JUMLAH MENU YANG DIPESAN PERBULAN
+    // SELECT SUM(dp.jumlah) FROM detail_pemesanan as dp
+    // INNER JOIN pemesanan as ps, menu as mn
+    // WHERE dp.id_menu = mn.id_menu 
+    // AND ps.id_pemesanan = dp.id_pemesanan 
+    // AND dp.id_menu = 8
+    // AND ps.tanggal_pemesanan 
+    // BETWEEN  "2022-12-14" AND "2022-12-21";
+
+
+
     public function index(Request $request)
     {
+        // ddd($request);
+        $now = date('Y-m-d');
+        $data = [
+            'title' => 'Data Penjualan Hari Ini',
+            'page'  => 'beranda',
+            'q'     => $request->get('q'),
+            'dataDetail' => []
+        ];
+        $data['totalPendapatan'] = DB::select(DB::raw("SELECT SUM(dp.jumlah*mn.harga) AS total
+                                                       FROM detail_pemesanan AS dp 
+                                                       INNER JOIN pemesanan AS ps, menu AS mn 
+                                                       WHERE dp.id_menu = mn.id_menu 
+                                                       AND ps.id_pemesanan = dp.id_pemesanan
+                                                       AND ps.tanggal_pemesanan = '".$now."'"))[0];
+
+        $data['jumlahMenu'] = DB::select(DB::raw("SELECT SUM(dp.jumlah) AS jumlah
+                                                  FROM detail_pemesanan AS dp
+                                                  INNER JOIN pemesanan AS ps
+                                                  WHERE ps.id_pemesanan = dp.id_pemesanan 
+                                                  AND ps.tanggal_pemesanan ='".$now."'"))[0];
+
+        $data['banyakMenu'] = DB::select(DB::raw("SELECT COUNT(DISTINCT dp.id_menu) AS banyak
+                                                  FROM detail_pemesanan AS dp
+                                                  INNER JOIN pemesanan AS ps
+                                                  WHERE ps.id_pemesanan = dp.id_pemesanan
+                                                  AND ps.tanggal_pemesanan ='".$now."'"))[0];
+
+        $data['totalPesanan'] = Pemesanan::where('tanggal_pemesanan','like','%' .$now. '%')->get()->count();
+        $dataNow =  DB::select(DB::raw("SELECT DISTINCT dp.id_menu AS idMenu
+        FROM detail_pemesanan AS dp
+        INNER JOIN pemesanan AS ps
+        WHERE ps.id_pemesanan = dp.id_pemesanan
+        AND ps.tanggal_pemesanan ='".$now."'"));
+
+        foreach($dataNow as $dn)
+        {
+            $dataCount = [
+                "jmlMenu" => DB::select(DB::raw("SELECT COUNT(dp.id_menu) AS jml
+                                                  FROM detail_pemesanan AS dp
+                                                  INNER JOIN pemesanan AS ps
+                                                  WHERE ps.id_pemesanan = dp.id_pemesanan
+                                                  AND dp.id_menu = ".$dn->idMenu."
+                                                  AND ps.tanggal_pemesanan ='".$now."'"))[0],
+                "menu" => Menu::where('id_menu', '=', $dn->idMenu)->get()
+
+                                    
+            ];
+            array_push($data["dataDetail"],$dataCount);
+        }
+
+
+        // ddd($data["dataDetail"]);
+        // $data['q'] = $request->get('q');
+        
+        // if ($data['q'] === null ) {
+        //     $data['q'] = Carbon::today()->toDateString();
+        // }
+        // $data['pemesanan']       = Pemesanan::where('tanggal_pemesanan','like','%' .$data['q']. '%')->join('menu','pemesanan.id_menu','=','menu.id_menu')->get();
+        // $data['jumlahPenjualan'] = Pemesanan::where('tanggal_pemesanan','like','%' .$data['q']. '%')->get()->count();
+        // ddd($data['pemesanan']);
+        // ddd($data['totalPendapatan']);
+        // return view('pemesanan.report', $data);
+        return view('manager.beranda', $data);
+    }
+    
+    public function reportBulan(Request $request)
+    {
+        // ddd($request);
         $data['title'] = 'Menu';
         $data['q'] = $request->get('q');
-        $data['menu'] = Menu::where('nama_menu', 'like', '%' .$data['q']. '%')->join('kategori', 'menu.id_kategori', '=', 'kategori.id_kategori')->get();
-        return view('pemesanan.index', $data);
+        $data['r'] = $request->get('r');
+        
+        if ($data['q'] === null &&  $data['r'] === null) {
+            $data['q'] = Carbon::today()->startOfMonth()->toDateString();
+            $data['r'] = Carbon::today()->endOfMonth()->toDateString();
+        }
+        $data['pemesanan'] = Pemesanan::whereBetween('tanggal_pemesanan', [$data['q'], $data['r']])->join('user','pemesanan.id_user','=','user.id_user')->get();
+        // ddd($data['pemesanan']);
+        // return view('pemesanan.reportbulan', $data);
+        return view('manager.report', $data);
     }
 
     /**

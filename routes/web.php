@@ -3,6 +3,7 @@
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PemesananController;
+use App\Http\Controllers\DetailPemesananController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,7 +32,7 @@ Route::get('/admin/menu', [UserController::class, 'adminMenu'])->name('admin.men
 
 Route::get('/register', [UserController::class, 'register'])->name('register');
 Route::get('/kasir', [UserController::class, 'kasir'])->name('kasir.pemesanan');
-Route::get('/manajer', [UserController::class, 'manajer'])->name('user.manajer');
+Route::get('/manajer', [UserController::class, 'manajer'])->name('manajer');
 Route::get('/user/createkasir', [UserController::class, 'createKasir'])->name('user.createKasir');
 Route::get('/user/createmanajer', [UserController::class, 'createManajer'])->name('user.createManajer');
 // Route::get('/user/edit', [UserController::class, 'edit'])->name('user.edit');
@@ -47,30 +48,32 @@ Route::get('/password', [UserController::class, 'password'])->name('password');
 Route::post('/password', [UserController::class, 'password_action'])->name('password.action');
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 Route::resource('menu', MenuController::class);
-Route::resource('pemesanan', PemesananController::class);
+// Route::resource('pemesanan', PemesananController::class);
 
 
 //route menu
-Route::post('/admin/menu/tambah', [MenuController::class, 'store'])->name('menu.store');
+// Route::post('/admin/menu/tambah', [MenuController::class, 'store'])->name('menu.store');
 
+Route::get('/pemesanan/create', [PemesananController::class, 'create'])->name('pemesanan.create');
+Route::post('/pemesanan/store', [PemesananController::class, 'store'])->name('pemesanan.store');
+Route::get('/pemesanan/', [PemesananController::class, 'index'])->name('pemesanan.index');
+Route::get('/pemesanan/report', [PemesananController::class, 'reportBulan'])->name('pemesanan.reportBulan');
+Route::get('/detailpemesanan/{pemesanan}', [DetailPemesananController::class, 'index'])->name('detailpemesanan.detail');
+// Route::get('/pemesanan/reportBulan', [PemesananController::class, 'reportBulan'])->name('pemesanan.reportBulan');
 
+// Route::get('/manager', function () {
+//     return view('manager.beranda', [
+//         "page" => "Manager",
+//         "title" => "Manager"
+//     ]);
+// });
 
-//route manager
-
-
-Route::get('/manager', function () {
-    return view('manager.beranda', [
-        "page" => "Manager",
-        "title" => "Manager"
-    ]);
-});
-
-Route::get('/report', function () {
-    return view('manager.report', [
-        "page" => "Manager",
-        "title" => "Manager"
-    ]);
-});
+// Route::get('/report', function () {
+//     return view('manager.report', [
+//         "page" => "Manager",
+//         "title" => "Manager"
+//     ]);
+// });
 
 // Route::get('/admin/kasir', function () {
 //     return view('admin.kasir',["page" => "kasir"]);
