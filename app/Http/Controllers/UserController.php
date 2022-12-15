@@ -251,19 +251,16 @@ class UserController extends Controller
             $validatedData['gambar'] = $request->file('gambar')->store('posts-images');
         }
 
-        // $user = User::find($id);
-        // $user->save($validatedData);
-        User::where('id_user', $request->idUser)->update($validatedData);
-
-        return redirect()->route('admin.kasir')->with('success', 'Success Deleting Menu');
-
-        // if ($user->level == 'admin') {
-        //     return redirect()->route('user.admin')->with('success', 'Success Deleting Menu');
-        // } else if ($user->level == 'kasir') {
-        //     return redirect()->route('user.kasir')->with('success', 'Success Deleting Menu');
-        // } else if ($user->level == 'manajer') {
-        //     return redirect()->route('user.manajer')->with('success', 'Success Deleting Menu');
-        // }
+        User::where('id_user', $user->update($validatedData));
+        if ($user->level == 'admin') {
+            return redirect()->route('admin')->with('success', 'Success Deleting Menu');
+        }
+        else if ($user->level == 'kasir') {
+            return redirect()->route('admin.kasir')->with('success', 'Success Deleting Menu');
+        }
+        else if ($user->level == 'manajer') {
+            return redirect()->route('admin.manajer')->with('success', 'Success Deleting Menu');
+        }
     }
 
     public function destroy(User $user)
@@ -276,7 +273,7 @@ class UserController extends Controller
         User::destroy($_GET["user"]);
         if ($user->level == 'kasir') {
             return redirect()->route('admin.kasir')->with('success', 'Registration Success Please Login');
-        } else if ($user->level == 'manajer') {
+        } else if($user->level == 'manajer'){
             return redirect()->route('admin.manajer')->with('success', 'Registration Success Please Login');
         }
         return redirect()->route('admin')->with('success', 'Registration Success Please Login');
