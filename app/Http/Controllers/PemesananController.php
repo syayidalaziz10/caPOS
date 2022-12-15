@@ -92,7 +92,7 @@ class PemesananController extends Controller
         foreach($dataNow as $dn)
         {
             $dataCount = [
-                "jmlMenu" => DB::select(DB::raw("SELECT COUNT(dp.id_menu) AS jml
+                "jmlMenu" => DB::select(DB::raw("SELECT SUM(dp.jumlah) AS jml
                                                   FROM detail_pemesanan AS dp
                                                   INNER JOIN pemesanan AS ps
                                                   WHERE ps.id_pemesanan = dp.id_pemesanan
