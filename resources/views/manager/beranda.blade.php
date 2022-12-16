@@ -83,7 +83,7 @@
 
 
     <div class="w-full">
-        <div class="text-2xl font-bold text-secondary my-20">
+        <div class="text-2xl font-bold text-secondary mt-20 mb-8">
             DETAIL PEMESANAN
         </div>
         <table class="w-full text-center rounded-xl bg-warna-2 border-separate border-spacing-y-2 border-spacing-x-2 text-secondary">
@@ -97,16 +97,19 @@
                 </tr>
             </thead>
             <tbody>
-                {{-- data user --}}
+                <?php $j=1; ?>
+                @foreach($pemesanan as $ps)
                 <tr>
-                    <th class="bg-primary rounded-xl py-4">1</th>
-                    <td class="bg-primary rounded-xl ">1</td>
-                    <td class="bg-primary rounded-xl">Alexandra</td>
-                    <td class="bg-primary rounded-xl">02/11/22</td>
+                    <th class="bg-primary rounded-xl py-4">{{$j}}</th>
+                    <td class="bg-primary rounded-xl ">{{$ps->id_pemesanan}}</td>
+                    <td class="bg-primary rounded-xl">{{$ps->nama}}</td>
+                    <td class="bg-primary rounded-xl">{{$ps->tanggal_pemesanan}}</td>
                     <td class="bg-primary rounded-xl rounded-r-xl">
-                        <a lhref="#" class="py-1 px-5 bg-componen rounded-2xl">Lihat Detail</a>
+                        <a href="{{ route('manajer.reportPemesanan', ['pemesanan' => $ps->id_pemesanan]) }}" class="py-1 px-5 bg-componen rounded-2xl">Lihat Detail</a>
                     </td>
                 </tr>
+                <?php $j++; ?>
+                @endforeach
             </tbody>
         </table>
     </div>

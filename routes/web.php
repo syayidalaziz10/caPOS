@@ -36,6 +36,7 @@ Route::get('/kasir', [UserController::class, 'kasir'])->name('kasir.pemesanan');
 Route::get('/manajer', [PemesananController::class, 'index'])->name('manajer');
 Route::get('/manajer/report', [PemesananController::class,  'reportBulan'])->name('manajer.reportBulan');
 Route::get('/manajer/report-harian', [PemesananController::class,  'reportHarian'])->name('manajer.reportHari');
+Route::get('/manajer/report/pemesanan/{pemesanan}', [DetailPemesananController::class, 'index'])->name('manajer.reportPemesanan');
 
 Route::get('/user/createkasir', [UserController::class, 'createKasir'])->name('user.createKasir');
 Route::get('/user/createmanajer', [UserController::class, 'createManajer'])->name('user.createManajer');

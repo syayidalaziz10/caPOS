@@ -110,9 +110,10 @@ class PemesananController extends Controller
         // if ($data['q'] === null ) {
         //     $data['q'] = Carbon::today()->toDateString();
         // }
-        // $data['pemesanan']       = Pemesanan::where('tanggal_pemesanan','like','%' .$data['q']. '%')->join('menu','pemesanan.id_menu','=','menu.id_menu')->get();
+        $data['pemesanan']       = Pemesanan::where('tanggal_pemesanan','like','%' .$now. '%')->join('user','pemesanan.id_user','=','user.id_user')->get();
         // $data['jumlahPenjualan'] = Pemesanan::where('tanggal_pemesanan','like','%' .$data['q']. '%')->get()->count();
         // return view('pemesanan.report', $data);
+        // ddd($data["pemesanan"]);
         return view('manager.beranda', $data);
     }
     
@@ -176,7 +177,7 @@ class PemesananController extends Controller
 
         // ddd($data);
 
-        // $data['pemesanan'] = Pemesanan::whereBetween('tanggal_pemesanan', [$data['q'], $data['r']])->join('user','pemesanan.id_user','=','user.id_user')->get();
+        $data['pemesanan'] = Pemesanan::whereBetween('tanggal_pemesanan', [$data['q'], $data['r']])->join('user','pemesanan.id_user','=','user.id_user')->get();
         // ddd($data['pemesanan']);
         // return view('pemesanan.reportbulan', $data);
         return view('manager.report', $data);
@@ -240,7 +241,7 @@ class PemesananController extends Controller
 
         // ddd($data);
 
-        // $data['pemesanan'] = Pemesanan::whereBetween('tanggal_pemesanan', [$data['q'], $data['r']])->join('user','pemesanan.id_user','=','user.id_user')->get();
+        $data['pemesanan'] = Pemesanan::where('tanggal_pemesanan', $data['q'])->join('user','pemesanan.id_user','=','user.id_user')->get();
         // ddd($data['pemesanan']);
         // return view('pemesanan.reportbulan', $data);
         return view('manager.report_hari', $data);
