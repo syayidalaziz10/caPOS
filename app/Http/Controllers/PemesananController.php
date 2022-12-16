@@ -107,15 +107,11 @@ class PemesananController extends Controller
 
 
         // ddd($data["dataDetail"]);
-        // $data['q'] = $request->get('q');
-        
         // if ($data['q'] === null ) {
         //     $data['q'] = Carbon::today()->toDateString();
         // }
         // $data['pemesanan']       = Pemesanan::where('tanggal_pemesanan','like','%' .$data['q']. '%')->join('menu','pemesanan.id_menu','=','menu.id_menu')->get();
         // $data['jumlahPenjualan'] = Pemesanan::where('tanggal_pemesanan','like','%' .$data['q']. '%')->get()->count();
-        // ddd($data['pemesanan']);
-        // ddd($data['totalPendapatan']);
         // return view('pemesanan.report', $data);
         return view('manager.beranda', $data);
     }
