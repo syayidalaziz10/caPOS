@@ -65,3 +65,10 @@ Route::get('/pemesanan/report', [PemesananController::class, 'reportBulan'])->na
 Route::get('/detailpemesanan/{pemesanan}', [DetailPemesananController::class, 'index'])->name('detailpemesanan.detail');
 // Route::get('/pemesanan/reportBulan', [PemesananController::class, 'reportBulan'])->name('pemesanan.reportBulan');
 
+
+Route::get('/manajer/detail', function () {
+    return view('manager.detail', [
+        'title' => 'detail',
+        'page' => 'detail'
+    ]);
+});
