@@ -121,7 +121,7 @@
                     <td class="bg-primary rounded-xl">{{$ps->nama}}</td>
                     <td class="bg-primary rounded-xl">{{$ps->tanggal_pemesanan}}</td>
                     <td class="bg-primary rounded-xl rounded-r-xl">
-                        <a href="{{ route('detailpemesanan.detail', ['pemesanan' => $ps->id_pemesanan]) }}" class="py-1 px-5 bg-componen rounded-2xl">Lihat Detail</a>
+                        <a href="{{ route('manajer.reportPemesanan', ['pemesanan' => $ps->id_pemesanan]) }}" class="py-1 px-5 bg-componen rounded-2xl">Lihat Detail</a>
                     </td>
                 </tr>
                 <?php $j++; ?>
