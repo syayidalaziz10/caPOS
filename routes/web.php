@@ -32,10 +32,12 @@ Route::get('/admin/menu', [UserController::class, 'adminMenu'])->name('admin.men
 
 Route::get('/register', [UserController::class, 'register'])->name('register');
 Route::get('/kasir', [UserController::class, 'kasir'])->name('kasir.pemesanan');
+Route::get('/kasir/detail/pemesanan/{pemesanan}', [DetailPemesananController::class, 'kasirDetail'])->name('kasir.detail');
 
 Route::get('/manajer', [PemesananController::class, 'index'])->name('manajer');
 Route::get('/manajer/report', [PemesananController::class,  'reportBulan'])->name('manajer.reportBulan');
 Route::get('/manajer/report-harian', [PemesananController::class,  'reportHarian'])->name('manajer.reportHari');
+Route::get('/manajer/report/pemesanan/{pemesanan}', [DetailPemesananController::class, 'index'])->name('manajer.reportPemesanan');
 
 Route::get('/user/createkasir', [UserController::class, 'createKasir'])->name('user.createKasir');
 Route::get('/user/createmanajer', [UserController::class, 'createManajer'])->name('user.createManajer');
@@ -65,3 +67,17 @@ Route::get('/pemesanan/report', [PemesananController::class, 'reportBulan'])->na
 Route::get('/detailpemesanan/{pemesanan}', [DetailPemesananController::class, 'index'])->name('detailpemesanan.detail');
 // Route::get('/pemesanan/reportBulan', [PemesananController::class, 'reportBulan'])->name('pemesanan.reportBulan');
 
+
+Route::get('/manajer/detail', function () {
+    return view('manager.detail', [
+        'title' => 'detail',
+        'page' => 'detail'
+    ]);
+});
+
+// Route::get('/kasir/detail', function () {
+//     return view('kasir.detail', [
+//         'title' => 'detail',
+//         'page' => 'detail'
+//     ]);
+// });

@@ -30,6 +30,10 @@
     ::-webkit-scrollbar-thumb:hover {
     background: #FFA46B ;
     }
+
+    ::-webkit-calendar-picker-indicator {
+        filter: invert(63%) sepia(36%) saturate(2474%) hue-rotate(300deg) brightness(101%) contrast(88%);
+    }
 </style>
 </head>
 <body class="font-body bg-primary flex w-full">

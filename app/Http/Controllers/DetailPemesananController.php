@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\DetailPemesanan;
 use App\Models\Pemesanan;
 use App\Models\Menu;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DetailPemesananController extends Controller
@@ -17,11 +18,25 @@ class DetailPemesananController extends Controller
     public function index($pemesanan)
     {
         // ddd($pemesanan);
-        $data['title'] = 'Menu';
+        $data = [ 
+            'title' => 'Detail Pemesanan',
+            'page' => 'pemesanan'
+        ];
         $data['details'] = DetailPemesanan::where('detail_pemesanan.id_pemesanan', '=', $pemesanan )->join('menu', 'detail_pemesanan.id_menu','=','menu.id_menu')->join('pemesanan', 'detail_pemesanan.id_pemesanan','=','pemesanan.id_pemesanan')->get();
-        // $data['details'] = DetailPemesanan::get();
         // ddd($data);
-        return view('pemesanan.detail', $data);
+        return view('manager.detail', $data);
+    }
+    public function kasirDetail($pemesanan)
+    {
+        // ddd($pemesanan);
+        $data = [ 
+            'title' => 'Detail Pemesanan',
+            'page' => 'pemesanan'
+        ];
+        $data['details'] = DetailPemesanan::where('detail_pemesanan.id_pemesanan', '=', $pemesanan )->join('menu', 'detail_pemesanan.id_menu','=','menu.id_menu')->join('pemesanan', 'detail_pemesanan.id_pemesanan','=','pemesanan.id_pemesanan')->get();
+        $data['profil']  = User::where('id_user','=', auth()->user()->id_user)->get();
+        // ddd($data);
+        return view('kasir.detail', $data);
     }
 
     /**

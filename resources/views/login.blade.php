@@ -17,7 +17,7 @@
             @endforeach
         @endif
     <div class="h-screen md:flex bg-primary">
-        <div class="w-1/2 py-16">
+        <div class="w-1/2 flex justify-center items-center">
             <form action="{{ route('login.action') }}" method="POST" enctype="multipart/form-data" class="w-full px-40">
                 @csrf
                 <div class="flex space-x-3 items-center mb-20">

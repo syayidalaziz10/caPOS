@@ -5,7 +5,7 @@
 @section('content')
     
 
-<div class="w-1/2 bg-primary" onload="alert('Pesanan ditambahkan');">
+<div class="w-1/2 bg-primary"">
     <div class="bg-warna-2 h-screen py-10 rounded-r-3xl flex flex-col items-center">
         {{-- <div class="flex items-center justify-between w-8/12  bg-primary pr-4 rounded-2xl mb-6">
             <input type="text" placeholder="Cari Menu " style="background-color: transparent" class="w-full rounded-2xl py-2.5 pl-8 text-secondary bg-transparent text-md">
@@ -32,154 +32,33 @@
 </div>
 {{-- end list menu --}}
 
-
-@if(session('success'))
 {{-- detail pesanan --}}
 <div class="bg-primary w-1/2 h-screen px-16 flex flex-col justify-between  overflow-auto scrollbar-hide">
     <div>
         <div class="bg-primary sticky top-0 py-10">
             <h1 class="text-4xl text-secondary  font-semibold tracking-wide">Detail Pesanan</h1>
         </div>
-        <div class="min-h-screen">
-            <div class="w-full text-secondary space-y-2 mb-8">
-                <div class="flex justify-between">
-                    <div>
-                        Transcation
-                    </div>
-                    <div class="font-bold">P-101918W2319</div>
-                </div>
-                <div class="flex justify-between">
-                    <div>
-                        Kasir
-                    </div>
-                    <div class="font-bold">Alexandra Collins</div>
-                </div>
-            </div>
-            <div class="w-full rounded-2xl h-auto bg-warna-2 text-secondary px-4 py-6">
-                {{-- <div class="flex justify-around items-center font-bold text-lg bg-componen">
-                    <div></div>
-                    <div class="text-left bg-warna-3 justify-self-start">ITEM</div>
-                    <div>QTY</div>
-                    <div>TOTAL</div>
-                </div>
-                <div class="flex items-center text-lg justify-around bg-componen">
-                    <div>1</div>
-                    <div>
-                        <div>Eh Teh Juara</div>
-                        <div>Rp. 10.000</div>
-                    </div>
-                    <div>2</div>
-                    <div>Rp. 30.000</div>
-                </div> --}
-                <table class="w-full">
-                    <tr>
-                        <th class="py-6"></th>
-                        <th class="text-left">ITEM</th>
-                        <th >QTY</th>
-                        <th>TOTAL</th>
-                    </tr>
-                    <tr>
-                        <td class="py-6 px-2">1</td>
-                        <td class="text-left ">
-                            <h1 class="font-semibold">Es Teh Juara</h1>
-                            <p>RP. 20000</p>
-                        </td>
-                        <td class=" text-center">2</td>
-                        <td class="text-center">RP. 20.000</td>
-                    </tr>
-                </table>
-            </div>
-        </div
-
-    {{-- total harga --}}
-    <div class="flex items-center pb-10 pt-4 bg-primary justify-between sticky bottom-0 justify-self-end text-secondary">
-        <div>
-            <p class="font-light">Total Harga</p>
-            <h1 id="totalhg" class="text-4xl font-bold text-warna-3 ">Rp. 40.000.000</h1>
-        </div>
-        <div>
-            <button type="submit" class="bg-sidebar text-secondary text-xl py-5 px-10 rounded-xl font-semibold">Submit</button>
-        </div>
-    </div>
-    {{-- end total harga --}}
-</div>
-{{-- end detail pesanan --}}
-
-
-
-
-@else
-{{-- detail pesanan --}}
-<div class="bg-primary w-1/2 h-screen px-16 flex flex-col justify-between  overflow-auto scrollbar-hide">
-    <div>
-        <div class="bg-primary sticky top-0 py-10">
-            <h1 class="text-4xl text-secondary  font-semibold tracking-wide">Detail Pesanan</h1>
-        </div>
-        <div class="min-h-screen">
-            <div class="w-full text-secondary space-y-2 mb-8">
-                <div class="flex justify-between">
-                    <div>
-                        Transcation
-                    </div>
-                    <div class="font-bold">P-101918W2319</div>
-                </div>
-                <div class="flex justify-between">
-                    <div>
-                        Kasir
-                    </div>
-                    <div class="font-bold">Alexandra Collins</div>
-                </div>
-            </div>
-            <div class="w-full rounded-2xl h-auto bg-warna-2 text-secondary px-4 py-6">
-                {{-- <div class="flex justify-around items-center font-bold text-lg bg-componen">
-                    <div></div>
-                    <div class="text-left bg-warna-3 justify-self-start">ITEM</div>
-                    <div>QTY</div>
-                    <div>TOTAL</div>
-                </div>
-                <div class="flex items-center text-lg justify-around bg-componen">
-                    <div>1</div>
-                    <div>
-                        <div>Eh Teh Juara</div>
-                        <div>Rp. 10.000</div>
-                    </div>
-                    <div>2</div>
-                    <div>Rp. 30.000</div>
-                </div> --}}
-                <table class="w-full">
-                    <tr>
-                        <th class="py-6"></th>
-                        <th class="text-left">ITEM</th>
-                        <th >QTY</th>
-                        <th>TOTAL</th>
-                    </tr>
-                    <tr>
-                        <td class="py-6 px-2">1</td>
-                        <td class="text-left ">
-                            <h1 class="font-semibold">Es Teh Juara</h1>
-                            <p>RP. 20000</p>
-                        </td>
-                        <td class=" text-center">2</td>
-                        <td class="text-center">RP. 20.000</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
+        <div id='listmenu' class="min-h-screen"></div>
     
+        </div>
     {{-- total harga --}}
     <div class="flex items-center pb-10 pt-4 bg-primary justify-between sticky bottom-0 justify-self-end text-secondary">
         <div>
             <p class="font-light">Total Harga</p>
-            <h1 id="totalhg" class="text-4xl font-bold text-warna-3 ">Rp. 40.000.000</h1>
+            <h1 id="totalhg" class="text-4xl font-bold text-warna-3 ">Rp. 0</h1>
         </div>
         <div>
-            <button type="submit" class="bg-sidebar text-secondary text-xl py-5 px-10 rounded-xl font-semibold">Cetak</button>
+            <form action="{{ route('pemesanan.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input id="valMenu" type="hidden" name="nama_menu">
+                <input id="valJml" type="hidden" name="jumlah">
+                <button type="submit" onclick="tmbh();" class="bg-sidebar text-secondary text-xl py-5 px-10 rounded-xl font-semibold">Submit</button>
+            </form>
         </div>
     </div>
     {{-- end total harga --}}
 </div>
 {{-- end detail pesanan --}}
 
-@endif
 
 @endsection

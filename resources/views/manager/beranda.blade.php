@@ -80,6 +80,39 @@
         </div>
 
     </div>
+
+
+    <div class="w-full">
+        <div class="text-2xl font-bold text-secondary mt-20 mb-8">
+            DETAIL PEMESANAN
+        </div>
+        <table class="w-full text-center rounded-xl bg-warna-2 border-separate border-spacing-y-2 border-spacing-x-2 text-secondary">
+            <thead class="bg-componen">
+                <tr>
+                    <th class="py-4 rounded-xl">No</th>
+                    <th class="rounded-xl">ID Pemesanan</th>
+                    <th class="rounded-xl">Nama Kasir</th>
+                    <th class="rounded-xl">Tanggal Pemesanan</th>
+                    <th class="rounded-xl">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php $j=1; ?>
+                @foreach($pemesanan as $ps)
+                <tr>
+                    <th class="bg-primary rounded-xl py-4">{{$j}}</th>
+                    <td class="bg-primary rounded-xl ">{{$ps->id_pemesanan}}</td>
+                    <td class="bg-primary rounded-xl">{{$ps->nama}}</td>
+                    <td class="bg-primary rounded-xl">{{$ps->tanggal_pemesanan}}</td>
+                    <td class="bg-primary rounded-xl rounded-r-xl">
+                        <a href="{{ route('manajer.reportPemesanan', ['pemesanan' => $ps->id_pemesanan]) }}" class="py-1 px-5 bg-componen rounded-2xl">Lihat Detail</a>
+                    </td>
+                </tr>
+                <?php $j++; ?>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </div>
 
 @endsection

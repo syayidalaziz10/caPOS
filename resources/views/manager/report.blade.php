@@ -4,19 +4,22 @@
 @section('content')
 <div class="py-14 px-6">
     <div class="mb-10">
-        <h1 class="text-secondary text-2xl font-bold m">LAPORAN BULANAN</h1>
+        <h1 class="text-secondary text-2xl font-bold m">PENUJALAN BULANAN</h1>
     </div>
 
-    <div class="flex justify-center h-24 mb-4 items-center h-screen w-full bg-warna-2 rounded-2xl">
-        <form class="row row-cols-auto g-1">
-            <div class="col">
-                <input class="form-control" type="date" name="q" value="{{ $q }}" placeholder="Search Here....">
+    <div class="flex justify-center h-24 mb-4 items-center w-full bg-warna-2 rounded-2xl">
+        <form class="w-full flex justify-around">
+            <div>
+                <input class="border border-componen bg-warna-2 py-1 px-20 rounded-3xl text-componen font-bold" type="date" name="q" value="{{ $q }}" placeholder="Search Here....">
             </div>
-            <div class="col">
-                <input class="form-control" type="date" name="r" value="{{ $r }}" placeholder="Search Here....">
+            <div class="text-3xl font-bold text-secondary">
+                -
             </div>
-            <div class="col">
-                <button class="btn btn-success">Search</button>
+            <div>
+                <input class="border border-componen bg-warna-2 py-1 px-20 rounded-3xl text-componen font-bold" type="date" name="r" value="{{ $r }}" placeholder="Search Here....">
+            </div>
+            <div>
+                <button class="bg-componen py-1.5 px-20 rounded-3xl text-secondary font-bold">Cari Laporan</button>
             </div>
         </form>
     </div>
@@ -94,6 +97,39 @@
         </div>
 
     </div>
+
+    <div class="w-full">
+        <div class="text-2xl font-bold text-secondary mt-20 mb-8">
+            DETAIL PEMESANAN
+        </div>
+        <table class="w-full text-center rounded-xl bg-warna-2 border-separate border-spacing-y-2 border-spacing-x-2 text-secondary">
+            <thead class="bg-componen">
+                <tr>
+                    <th class="py-4 rounded-xl">No</th>
+                    <th class="rounded-xl">ID Pemesanan</th>
+                    <th class="rounded-xl">Nama Kasir</th>
+                    <th class="rounded-xl">Tanggal Pemesanan</th>
+                    <th class="rounded-xl">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php $j=1; ?>
+                @foreach($pemesanan as $ps)
+                <tr>
+                    <th class="bg-primary rounded-xl py-4">{{$j}}</th>
+                    <td class="bg-primary rounded-xl ">{{$ps->id_pemesanan}}</td>
+                    <td class="bg-primary rounded-xl">{{$ps->nama}}</td>
+                    <td class="bg-primary rounded-xl">{{$ps->tanggal_pemesanan}}</td>
+                    <td class="bg-primary rounded-xl rounded-r-xl">
+                        <a href="{{ route('detailpemesanan.detail', ['pemesanan' => $ps->id_pemesanan]) }}" class="py-1 px-5 bg-componen rounded-2xl">Lihat Detail</a>
+                    </td>
+                </tr>
+                <?php $j++; ?>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+
 </div>
 
 @endsection
