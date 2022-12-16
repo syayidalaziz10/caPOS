@@ -32,6 +32,7 @@ Route::get('/admin/menu', [UserController::class, 'adminMenu'])->name('admin.men
 
 Route::get('/register', [UserController::class, 'register'])->name('register');
 Route::get('/kasir', [UserController::class, 'kasir'])->name('kasir.pemesanan');
+Route::get('/kasir/detail/pemesanan/{pemesanan}', [DetailPemesananController::class, 'kasirDetail'])->name('kasir.detail');
 
 Route::get('/manajer', [PemesananController::class, 'index'])->name('manajer');
 Route::get('/manajer/report', [PemesananController::class,  'reportBulan'])->name('manajer.reportBulan');
@@ -73,3 +74,10 @@ Route::get('/manajer/detail', function () {
         'page' => 'detail'
     ]);
 });
+
+// Route::get('/kasir/detail', function () {
+//     return view('kasir.detail', [
+//         'title' => 'detail',
+//         'page' => 'detail'
+//     ]);
+// });

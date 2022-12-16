@@ -284,7 +284,7 @@ class PemesananController extends Controller
             ]);
             $detailPemesanan->save();
         }
-        return redirect()->route('kasir.pemesanan')->with('success', 'Success Creating pemesanan');
+        return redirect()->route('kasir.detail', ['pemesanan' => $pemesanan->id_pemesanan])->with('success', 'Success Creating pemesanan');
     }
 
     /**

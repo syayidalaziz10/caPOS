@@ -5,7 +5,7 @@
 <div class="py-14 px-6">
 
     <div class="mb-5">
-        <a href="" class="text-componen border border-componen py-1 px-8 rounded-2xl">Kembali</a>
+        <a href="{{ str_replace(url('/'), '', url()->previous()) }}" class="text-componen border border-componen py-1 px-8 rounded-2xl">Kembali</a>
     </div>
     <div class="mb-10">
         <h1 class="text-secondary text-2xl font-bold m">DETAIL PEMESANAN TANGGAL {{ $details[0]->tanggal_pemesanan }}</h1>
