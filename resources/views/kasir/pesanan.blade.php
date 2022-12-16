@@ -34,7 +34,7 @@
         }
     </style>
 </head>
-<body onload="alert('Pesaanan ditambahkan');" class="font-body">
+<body @if(session('success')) onload="alert('Pesaanan ditambahkan');" @endif class="font-body">
     <div class="flex">
         {{-- sidebar --}}
         <div class="bg-warna-2">
