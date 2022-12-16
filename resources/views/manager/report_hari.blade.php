@@ -4,16 +4,13 @@
 @section('content')
 <div class="py-14 px-6">
     <div class="mb-10">
-        <h1 class="text-secondary text-2xl font-bold m">LAPORAN BULANAN</h1>
+        <h1 class="text-secondary text-2xl font-bold m">LAPORAN HARIAN</h1>
     </div>
 
     <div class="flex justify-center h-24 mb-4 items-center h-screen w-full bg-warna-2 rounded-2xl">
         <form class="row row-cols-auto g-1">
             <div class="col">
                 <input class="form-control" type="date" name="q" value="{{ $q }}" placeholder="Search Here....">
-            </div>
-            <div class="col">
-                <input class="form-control" type="date" name="r" value="{{ $r }}" placeholder="Search Here....">
             </div>
             <div class="col">
                 <button class="btn btn-success">Search</button>
@@ -88,7 +85,7 @@
                 
             </div>
             <div>
-                <p class="font-light font-sm text-secondary">PENDAPATAN BULANAN</p>
+                <p class="font-light font-sm text-secondary">PENDAPATAN HARIAN</p>
                 <h1 class="font-bold text-4xl text-warna-3">RP. {{ $totalPendapatan->total }}</h1>
             </div>
         </div>

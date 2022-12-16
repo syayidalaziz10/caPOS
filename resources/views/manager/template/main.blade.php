@@ -7,6 +7,30 @@
     @vite('resources/css/app.css')
     <title>caPOS | {{$title}}</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+    ::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 1rem;
+
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+    background: #1E2541;
+    border-radius: 1rem;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+    background: #F0719C;
+    border-radius: 1rem;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+    background: #FFA46B ;
+    }
+</style>
 </head>
 <body class="font-body bg-primary flex w-full">
 

@@ -13,11 +13,13 @@
         }
         ::-webkit-scrollbar {
             width: 5px;
+            border-radius:1rem;
         }
 
         /* Track */
         ::-webkit-scrollbar-track {
             background: #1E2541;
+            border-radius:1rem;
         }
 
         /* Handle */

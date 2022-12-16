@@ -32,21 +32,25 @@ Route::get('/admin/menu', [UserController::class, 'adminMenu'])->name('admin.men
 
 Route::get('/register', [UserController::class, 'register'])->name('register');
 Route::get('/kasir', [UserController::class, 'kasir'])->name('kasir.pemesanan');
+
 Route::get('/manajer', [PemesananController::class, 'index'])->name('manajer');
+Route::get('/manajer/report', [PemesananController::class,  'reportBulan'])->name('manajer.reportBulan');
+Route::get('/manajer/report-harian', [PemesananController::class,  'reportHarian'])->name('manajer.reportHari');
+
 Route::get('/user/createkasir', [UserController::class, 'createKasir'])->name('user.createKasir');
 Route::get('/user/createmanajer', [UserController::class, 'createManajer'])->name('user.createManajer');
-// Route::get('/user/edit', [UserController::class, 'edit'])->name('user.edit');
 Route::post('/user/update', [UserController::class, 'update'])->name('user.update');
-// Route::get('/user/destroy', [UserController::class, 'destroy'])->name('user.destroy');
-// Route::post('/user/destroy', [UserController::class, 'destroy'])->name('user.destroy');
 Route::delete('/user/destroy', [UserController::class, 'destroy'])->name('user.destroy');
 Route::post('/register', [UserController::class, 'register_action'])->name('register.action');
+
 Route::get('/', [UserController::class, 'login'])->name('login');
 Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::post('/login', [UserController::class, 'login_action'])->name('login.action');
+Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
 Route::get('/password', [UserController::class, 'password'])->name('password');
 Route::post('/password', [UserController::class, 'password_action'])->name('password.action');
-Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
 Route::resource('menu', MenuController::class);
 // Route::resource('pemesanan', PemesananController::class);
 
@@ -61,29 +65,3 @@ Route::get('/pemesanan/report', [PemesananController::class, 'reportBulan'])->na
 Route::get('/detailpemesanan/{pemesanan}', [DetailPemesananController::class, 'index'])->name('detailpemesanan.detail');
 // Route::get('/pemesanan/reportBulan', [PemesananController::class, 'reportBulan'])->name('pemesanan.reportBulan');
 
-// Route::get('/manager', function () {
-//     return view('manager.beranda', [
-//         "page" => "Manager",
-//         "title" => "Manager"
-//     ]);
-// });
-
-// Route::get('/report', function () {
-//     return view('manager.report', [
-//         "page" => "Manager",
-//         "title" => "Manager"
-//     ]);
-// });
-
-// Route::get('/admin/kasir', function () {
-//     return view('admin.kasir',["page" => "kasir"]);
-// });
-
-// Route::get('/admin/manager', function () {
-//     return view('admin.manager',["page" => "manager"]);
-// });
-
-// Route::get('/admin/menu', function () {
-//     return view('admin.menu',["page" => "menu"]);
-// });
-// Route::resource('user', UserController::class);
